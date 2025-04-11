@@ -78,7 +78,7 @@ I plan to add more models to this collection over time.  If you have a model you
 
 ### Granite-32-8b-instruct
 
-**API Endpoint**: https://smpnet74-1--granite-3-2-8b-instruct-serve.modal.run/v1
+**API Endpoint**: `https://smpnet74-1--granite-3-2-8b-instruct-serve.modal.run/v1`
 
 The Granite-3.2-8b-instruct model is IBM's 8B parameter instruction-tuned model that excels at following instructions and tool calling.
 
@@ -86,7 +86,7 @@ I use this model almost exclusively for tool calling because its one of the few 
 
 ### DeepHermes-3-Mistral-24B-Preview
 
-**API Endpoint**: https://smpnet74-1--deephermes-3-mistral-24b-preview-serve.modal.run/v1
+**API Endpoint**: `https://smpnet74-1--deephermes-3-mistral-24b-preview-serve.modal.run/v1`
 
 The DeepHermes-3-Mistral-24B-Preview model is NousResearch's 24B parameter model based on Mistral architecture. Key features include:
 
@@ -102,7 +102,7 @@ Do not include that section in your system prompt and it will act as a tradition
 
 ### Qwen2.5-Coder-32B-Instruct
 
-**API Endpoint**: https://smpnet74-1--qwen2-5-coder-32b-instruct-gptq-int4-serve.modal.run/v1
+**API Endpoint**: `https://smpnet74-1--qwen2-5-coder-32b-instruct-gptq-int4-serve.modal.run/v1`
 
 The Qwen2.5-Coder-32B-Instruct model is Alibaba's code-specialized large language model with 32B parameters. This version uses GPTQ 4-bit quantization to reduce memory requirements while maintaining high performance.
 
@@ -112,7 +112,7 @@ I also have found that the int4 awq quantized version works just as well as full
 
 ### QwQ-32B-AWQ
 
-**API Endpoint**: https://smpnet74-1--qwq-32b-awq-serve.modal.run/v1
+**API Endpoint**: `https://smpnet74-1--qwq-32b-awq-serve.modal.run/v1`
 
 QwQ-32B-AWQ is Qwen's specialized reasoning model with 32B parameters, quantized using AWQ to 4-bit precision. This model is particularly strong at mathematical reasoning, scientific analysis, and complex problem-solving tasks.
 
