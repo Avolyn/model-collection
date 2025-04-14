@@ -36,12 +36,13 @@ Developing AI applications can be frusterating.  I found developing agentic AI a
 The table below provides detailed specifications for each model in this collection:
 
 | Model Name | Inference Engine | Tool Calling | Reasoning | FlashInfer | Quantization | Context Window | GPU Type | GPU Count |
-|------------|-------------|--------------|-----------|------------|--------------|----------------|----------|-----------|
+|------------|-------------|--------------|-----------|------------|--------------|----------------|----------|---------|
 | [Granite-3.2-8b-instruct](#granite-32-8b-instruct) | VLLM 0.8.3 v1 | Yes | No | 0.2.5 | None | 131K | L40S | 1 |
 | [DeepHermes-3-Mistral-24B-Preview](#deephermes-3-mistral-24b-preview) | VLLM 0.8.2 v0 | No | Yes | 0.2.0.post2 | None | 32K | A100-80GB | 1 |
 | [Qwen2.5-Coder-32B-Instruct](#qwen25-coder-32b-instruct) | VLLM 0.8.3 v1 | Yes | No | 0.2.0.post2 | GPTQ-Int4 (gptq_marlin) | 32K | A100-40GB | 1 |
 | [QwQ-32B-AWQ](#qwq-32b-awq) | VLLM 0.8.2 v0 | Yes | Yes | 0.2.0.post2 | AWQ | 32K | L40S | 1 |
 | [DeepSeek-R1-Distill-Llama-8B](#deepseek-r1-distill-llama-8b) | VLLM 0.8.3 v0 | No | Yes | Yes | None | 32K | L4 | 2 |
+| [BGE-large-en-v1.5](#bge-large-en-v15) | VLLM 0.8.3 v0 | No | No | No | None | N/A | T4 | 1 |
 
 ## Usage
 
@@ -71,7 +72,7 @@ print(response.choices[0].message.content)
 I plan to add more models to this collection over time.  If you have a model you'd like me to add, please let me know.
 
 1. ✅ Deepseek R1 Distill model - Added!
-2. BGE-large-1.5 - I usually just embed inline with CPU but I am going to host BGE on an L4
+2. ✅ BGE-large-en-v1.5 - Added!
 3. Some vision model
 4. Cogoto hybrid reasoning model
 
@@ -132,3 +133,21 @@ Key features include:
 - Optimized for showing step-by-step thinking when prompted with reasoning questions
 
 This model is particularly useful for applications requiring detailed reasoning processes while maintaining reasonable inference speeds and resource requirements. When prompted with "Please show your thinking" or similar instructions, the model will demonstrate its reasoning process before providing a final answer.
+
+### BGE-large-en-v1.5
+
+**API Endpoint**: `https://smpnet74-1--bge-large-en-v1-5-serve.modal.run/v1`
+
+The BGE-large-en-v1.5 model is a state-of-the-art embedding model developed by BAAI (Beijing Academy of Artificial Intelligence). This model is specifically designed to convert text into high-quality vector embeddings for various natural language processing tasks.
+
+Key features include:
+- 1024-dimensional dense vector embeddings
+- Optimized for semantic search and text similarity tasks
+- Supports English language content
+- Deployed with vLLM's embedding capabilities for efficient inference
+
+This model is particularly useful for:
+- Building semantic search systems
+- Document retrieval applications
+- Text clustering and classification
+- RAG (Retrieval-Augmented Generation) systems
