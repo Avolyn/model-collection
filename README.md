@@ -41,6 +41,7 @@ The table below provides detailed specifications for each model in this collecti
 | [DeepHermes-3-Mistral-24B-Preview](#deephermes-3-mistral-24b-preview) | VLLM 0.8.2 v0 | No | Yes | 0.2.0.post2 | None | 32K | A100-80GB | 1 |
 | [Qwen2.5-Coder-32B-Instruct](#qwen25-coder-32b-instruct) | VLLM 0.8.3 v1 | Yes | No | 0.2.0.post2 | GPTQ-Int4 (gptq_marlin) | 32K | A100-40GB | 1 |
 | [QwQ-32B-AWQ](#qwq-32b-awq) | VLLM 0.8.2 v0 | Yes | Yes | 0.2.0.post2 | AWQ | 32K | L40S | 1 |
+| [DeepSeek-R1-Distill-Llama-8B](#deepseek-r1-distill-llama-8b) | VLLM 0.8.3 v0 | No | Yes | Yes | None | 32K | L4 | 2 |
 
 ## Usage
 
@@ -69,9 +70,10 @@ print(response.choices[0].message.content)
 
 I plan to add more models to this collection over time.  If you have a model you'd like me to add, please let me know.
 
-1. Deepseek R1 Distill model
+1. ✅ Deepseek R1 Distill model - Added!
 2. BGE-large-1.5 - I usually just embed inline with CPU but I am going to host BGE on an L4
 3. Some vision model
+4. Cogoto hybrid reasoning model
 
 
 ## Model Notes
@@ -117,3 +119,16 @@ I also have found that the int4 awq quantized version works just as well as full
 QwQ-32B-AWQ is Qwen's specialized reasoning model with 32B parameters, quantized using AWQ to 4-bit precision. This model is particularly strong at mathematical reasoning, scientific analysis, and complex problem-solving tasks.
 
 What makes this model special is its dual capabilities - it combines both tool calling and reasoning in a single model. The reasoning is implemented using the DeepSeek-R1 reasoning parser, which allows the model to show its step-by-step thinking process before providing a final answer.
+
+### DeepSeek-R1-Distill-Llama-8B
+
+**API Endpoint**: `https://smpnet74-1--deepseek-r1-distill-llama-8b-serve.modal.run/v1`
+
+The DeepSeek-R1-Distill-Llama-8B model is a distilled version of DeepSeek's R1 reasoning model, based on the Llama architecture with 8B parameters. This model is specifically designed to provide strong reasoning capabilities in a more efficient package.
+
+Key features include:
+- Enabled reasoning/thinking capabilities with the DeepSeek R1 reasoning parser
+- 32K token context window
+- Optimized for showing step-by-step thinking when prompted with reasoning questions
+
+This model is particularly useful for applications requiring detailed reasoning processes while maintaining reasonable inference speeds and resource requirements. When prompted with "Please show your thinking" or similar instructions, the model will demonstrate its reasoning process before providing a final answer.
