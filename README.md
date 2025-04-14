@@ -73,8 +73,7 @@ I plan to add more models to this collection over time.  If you have a model you
 
 1. ✅ Deepseek R1 Distill model - Added!
 2. ✅ BGE-large-en-v1.5 - Added!
-3. Some vision model
-4. Cogoto hybrid reasoning model
+3. Cogoto hybrid reasoning model
 
 
 ## Model Notes
