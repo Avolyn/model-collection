@@ -43,6 +43,7 @@ The table below provides detailed specifications for each model in this collecti
 | [QwQ-32B-AWQ](#qwq-32b-awq) | VLLM 0.8.2 v0 | Yes | Yes | 0.2.0.post2 | AWQ | 32K | L40S | 1 |
 | [DeepSeek-R1-Distill-Llama-8B](#deepseek-r1-distill-llama-8b) | VLLM 0.8.3 v0 | No | Yes | Yes | None | 32K | L4 | 2 |
 | [BGE-large-en-v1.5](#bge-large-en-v15) | VLLM 0.8.3 v0 | No | No | No | None | N/A | T4 | 1 |
+| [Jina Reranker V2 Base Multilingual](#jina-reranker-v2-base-multilingual) | VLLM 0.8.3 v0 | No | No | No | None | N/A | L4 | 1 |
 
 ## Usage
 
@@ -162,3 +163,27 @@ This model is particularly useful for:
 - Document retrieval applications
 - Text clustering and classification
 - RAG (Retrieval-Augmented Generation) systems
+
+Example usage involves sending text to the `/v1/embeddings` endpoint with a JSON payload containing an "input" field with your text, which returns vector embeddings that can be used for semantic search and similarity comparisons.
+
+### Jina Reranker V2 Base Multilingual
+
+**API Endpoint**: `https://smpnet74-1--jina-reranker-v2-base-multilingual-serve-dev.modal.run/v1`
+
+**Model Card**: [jinaai/jina-reranker-v2-base-multilingual](https://huggingface.co/jinaai/jina-reranker-v2-base-multilingual)
+
+The Jina Reranker V2 Base Multilingual model is a powerful cross-encoder designed for reranking search results across multiple languages. This model evaluates the relevance between a query and document pairs, providing scores that can be used to reorder search results for improved precision.
+
+Key features include:
+- Multilingual support for over 100 languages
+- Optimized for document reranking tasks
+- Based on a cross-encoder architecture for direct relevance scoring
+- Deployed with vLLM's scoring capabilities for efficient inference
+
+This model is particularly useful for:
+- Improving search result quality in multilingual applications
+- Reranking candidate documents in RAG (Retrieval-Augmented Generation) systems
+- Enhancing document retrieval precision in information retrieval systems
+- Fine-tuning search results for domain-specific applications
+
+Example usage involves sending a query and a list of documents to the `/v1/rerank` endpoint, which returns the documents reordered by relevance score.
