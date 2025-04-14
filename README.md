@@ -29,7 +29,7 @@ It is stupid simple to inject callbacks into model hosting to capture/store prom
 
 ## A note from the developer
 
-Developing AI applications can be frusterating.  I found developing agentic AI apps over the past year using local models via Ollama or LMStudio often relegated me to make concessions on quantization levels or dealing with the limitations of not having the ability to scale.  In addition, I found dealing with the API providers was rate limited, expensive, and very frusterating when I didn't have complete control over the model, the engine it was running, and its configuration.  Plus I find very few of the API providers other than the frontier models (GPT, Gemini, Claude, Cohere, etc) deliver models that will handle tool calling.  One of my favorite API hosting organizations, Sambanova, doesn't host a single model that supports tool calling.  My other favorite provider Groq, rate limits to the moon and some of the model context configuration is lack luster.  But they do both still deliver value when inference speed is paramount as they have processing hardware that isn't available in the market.
+Developing AI applications can be frusterating.  I found developing agentic AI apps over the past year using local models via Ollama or LMStudio often relegated me to make concessions on quantization levels or dealing with the limitations of not having the ability to scale.  In addition, I found dealing with the API providers was rate limited, expensive, and very frusterating when I didn't have complete control over the model, the engine it was running, and its configuration.  Plus I find very few of the API providers other than the frontier models (GPT, Gemini, Claude, Cohere, etc) deliver models that will handle tool calling.  One of my favorite API hosting organizations, [SambaNova](https://sambanova.ai/), doesn't host a single model that supports tool calling.  My other favorite provider [Groq](https://groq.com/), rate limits to the moon and some of the model context configuration is lack luster.  But they do both still deliver value when inference speed is paramount as they have processing hardware that isn't available in the market.
 
 ## Model Specifications
 
@@ -82,6 +82,8 @@ I plan to add more models to this collection over time.  If you have a model you
 
 **API Endpoint**: `https://smpnet74-1--granite-3-2-8b-instruct-serve.modal.run/v1`
 
+**Model Card**: [IBM/granite-3.2-8b-instruct](https://huggingface.co/IBM/granite-3.2-8b-instruct)
+
 The Granite-3.2-8b-instruct model is IBM's 8B parameter instruction-tuned model that excels at following instructions and tool calling.
 
 I use this model almost exclusively for tool calling because its one of the few tool calling models that works flawlessly at 8b parameters.  The llama and qwen model family has struggled for me with tool calling in the smaller versions.
@@ -89,6 +91,8 @@ I use this model almost exclusively for tool calling because its one of the few 
 ### DeepHermes-3-Mistral-24B-Preview
 
 **API Endpoint**: `https://smpnet74-1--deephermes-3-mistral-24b-preview-serve.modal.run/v1`
+
+**Model Card**: [NousResearch/DeepHermes-3-Mistral-24B-Preview](https://huggingface.co/NousResearch/DeepHermes-3-Mistral-24B-Preview)
 
 The DeepHermes-3-Mistral-24B-Preview model is NousResearch's 24B parameter model based on Mistral architecture. Key features include:
 
@@ -106,6 +110,8 @@ Do not include that section in your system prompt and it will act as a tradition
 
 **API Endpoint**: `https://smpnet74-1--qwen2-5-coder-32b-instruct-gptq-int4-serve.modal.run/v1`
 
+**Model Card**: [Qwen/Qwen2.5-Coder-32B-Instruct](https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct)
+
 The Qwen2.5-Coder-32B-Instruct model is Alibaba's code-specialized large language model with 32B parameters. This version uses GPTQ 4-bit quantization to reduce memory requirements while maintaining high performance.
 
 This model I have found works fantastic as a coding replacement model for Sonnet 3.5-7.  If you are into vibe coding with technologies such as Aider, Roo Code, or Cline, you'll find its near impossible to find a model that works as well as Sonnet 3.5 or 3.7.  I have tested at least 20 different model architectures and parameter sizes, and Qwen25-Coder-32B-Instruct always comes out on top.
@@ -116,6 +122,8 @@ I also have found that the int4 awq quantized version works just as well as full
 
 **API Endpoint**: `https://smpnet74-1--qwq-32b-awq-serve.modal.run/v1`
 
+**Model Card**: [Qwen/QwQ-32B](https://huggingface.co/Qwen/QwQ-32B)
+
 QwQ-32B-AWQ is Qwen's specialized reasoning model with 32B parameters, quantized using AWQ to 4-bit precision. This model is particularly strong at mathematical reasoning, scientific analysis, and complex problem-solving tasks.
 
 What makes this model special is its dual capabilities - it combines both tool calling and reasoning in a single model. The reasoning is implemented using the DeepSeek-R1 reasoning parser, which allows the model to show its step-by-step thinking process before providing a final answer.
@@ -123,6 +131,8 @@ What makes this model special is its dual capabilities - it combines both tool c
 ### DeepSeek-R1-Distill-Llama-8B
 
 **API Endpoint**: `https://smpnet74-1--deepseek-r1-distill-llama-8b-serve.modal.run/v1`
+
+**Model Card**: [unsloth/DeepSeek-R1-Distill-Llama-8B](https://huggingface.co/unsloth/DeepSeek-R1-Distill-Llama-8B)
 
 The DeepSeek-R1-Distill-Llama-8B model is a distilled version of DeepSeek's R1 reasoning model, based on the Llama architecture with 8B parameters. This model is specifically designed to provide strong reasoning capabilities in a more efficient package.
 
@@ -136,6 +146,8 @@ This model is particularly useful for applications requiring detailed reasoning 
 ### BGE-large-en-v1.5
 
 **API Endpoint**: `https://smpnet74-1--bge-large-en-v1-5-serve.modal.run/v1`
+
+**Model Card**: [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5)
 
 The BGE-large-en-v1.5 model is a state-of-the-art embedding model developed by BAAI (Beijing Academy of Artificial Intelligence). This model is specifically designed to convert text into high-quality vector embeddings for various natural language processing tasks.
 
