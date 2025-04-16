@@ -1,6 +1,6 @@
 # Scott's AI Model Collection
 
-This repository contains a collection of hosted AI models I find differentuated and useful for building Agentic AI applications.  I host on Runpod or Modal and are set up to utilize the full allowed context length without any rate limiting constraints.
+This repository contains a collection of hosted AI models I find differentuated and useful for building Agentic AI applications.  I host on Runpod or Modal and the models deployed to utilize the full allowed context length without any rate limiting constraints.
 
 Unlike ALL commercial API providers that impose various limits even after payment, these models are configured without:
 
@@ -26,17 +26,18 @@ The table below provides detailed specifications for each model in this collecti
 | [DeepSeek-R1-Distill-Llama-8B](#deepseek-r1-distill-llama-8b) | pc-modal-7b241d | Modal | VLLM 0.8.3 v0 | No | Yes | 0.2.0post2 | None | 32K | L4 | 2 | Unlimited | Unlimited | Unlimited | None | None |
 | [BGE-large-en-v1.5](#bge-large-en-v15) | pc-modal-1a7579 | Modal | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | T4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [Jina Reranker V2 Base Multilingual](#jina-reranker-v2-base-multilingual) | pc-modal-b951df | Modal | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | L4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [DeepSeek R1 Distill Llama 70b](#deepseek-r1-distill-llama-70b) | pc-groq-d-6b723c | Groq | N/A | No | Yes | N/A | Unknown | 32K | N/A | N/A | 30 | N/A | 1000 | None | None |
 
 *1 - Reasoning is toggled via the prompt
 
 
 ## Deployment
 
-The models I host are deployed on a containerized serverless capability. To save on costs, each model will scale to zero when not in use.  If a model has scaled down, it will take a few minutes for the model and associated container to cold start on fresh use.  If you want to warm up the model before use, you can send a POST to the /docs or /health endpoint which will warm up the model and associated container.  Containers currently run for 10 minutes without an active call before scaling down.  In my experience, as you are interating on code, you usually execute, think for 3 to 6 minutes, modify code, and execute again so 10 minutes is more than enough time to keep the container warm and keep you out of cold start hell.
+The models I host are deployed on a containerized serverless capability. To save on costs, each model will scale to zero when not in use.  If a model has scaled down, it will take a few minutes for the model and associated container to cold start on fresh use.  If you want to warm up the model before use, you can send a POST to the /docs or /health endpoint which will warm up the model and associated container.  Containers currently run for 10 minutes without an active call before scaling down.  In my experience, as you are interating on code, you usually execute, think for 3 to 6 minutes, modify code, and execute again so 10 minutes is more than enough time to keep the container warm and keep you from repeated coldstart.
 
-The models I have deployed are great for batch AI or agentic applications.  They can also be used for real time application with the disclaimer of the container start time.  While I host the models on the providers and do not pull them from Huggingface on each start, there still is a startup cost.  Most models under 14B will start in 3 minutes or less.  As the models grow in size, so does the container start time so be aware.
+The models I have deployed are great for batch AI or agentic applications.  They can also be used for real time application with the disclaimer of the container start time.  Most models under 14B will start in 3 minutes or less.  As the models grow in size, so does the container start time so be aware.
 
-Keep in mind that I store the models that run on Modal on Modal volumes because Modal does not charge for that storage.  These models will cold start more quickly than on Runpod.  Runpod likes to charge for that feature so I load the models in realtime from Huggingface which introduces an additional cold start delay.
+Keep in mind that I store the models that run on Modal on Modal volumes because Modal does not charge for that storage.  These models will cold start more quickly than on Runpod.  Runpod likes to charge for that feature so I load the models in realtime from Huggingface which introduces an additional cold start delay.  In addition, in some examples where I have decided to use then TensorRT-LLM engine, those models are compiled directly into the container image, so of course those will start more quickly.
 
 ## Testing
 
@@ -48,7 +49,7 @@ The models I host are host on Modal run in either AWS and GCP.  I don't have any
 
 ## Security
 
-I originally exposed the raw endpoints for the models I host, but I have since interjected an AI gatway layer in the form of Portkey.  The main reason I have done this is to add model routing and load balancing, model fallbacks, caching, and security features to some of the models I host.  My original idea was to host the gateway myself in the form of Litellm or Kong AI Gateway, I have used both gateways extensively, but I decided that I didn't want the care and feeding of a production level kube cluster and deal with the care and feeding that goes along with hosting those gateways by hand.  You will see in the model table that some of the models I host have a LB (Load Balancing) and Cache feature enabled.
+I originally exposed the raw model endpoints, but I have since interjected an AI gatway layer in the form of Portkey.  The main reason I have done this is to add model routing and load balancing, model fallbacks, caching, and security features to some of the models I host.  My original idea was to host the gateway myself in the form of Litellm or Kong AI Gateway, I have used both gateways extensively, but I decided that I didn't want the care and feeding of a production level kube cluster and deal with all that goes along with hosting those gateways by hand.  You will see in the model table that some of the models I host have a LB (Load Balancing) and Cache feature enabled.  Those are portkey configurations, and have nothing to do with how the models are deployed for inference.
 
 It is stupid simple to inject call backs and various configurations into model hosting to log requests and responses.  You have my word that I don't do any of that with the models I host.  For the models that are delivered via an API provider like Sambanova, I have no control over what they do with your data.  As I add providers over time, if the provider offers the ability to disable caching and logging I will do that, but in the case of Sambanova, I have no control over what they do with your data.  Buyer Beware.
 
@@ -123,7 +124,7 @@ Do not include that section in your system prompt and it will act as a tradition
 
 ### Qwen2.5-Coder-32B-Instruct
 
-**API Endpoint**: `https://smpnet74-1--qwen2-5-coder-32b-instruct-gptq-int4-serve.modal.run/v1`
+**ConfigID**: `pc-modal-467df0`
 
 **Model Card**: [Qwen/Qwen2.5-Coder-32B-Instruct](https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct)
 
@@ -135,7 +136,7 @@ I also have found that the int4 awq quantized version works just as well as full
 
 ### QwQ-32B-AWQ
 
-**API Endpoint**: `https://smpnet74-1--qwq-32b-awq-serve.modal.run/v1`
+**ConfigID**: `pc-modal-19305a`
 
 **Model Card**: [Qwen/QwQ-32B](https://huggingface.co/Qwen/QwQ-32B)
 
@@ -145,7 +146,7 @@ What makes this model special is its dual capabilities - it combines both tool c
 
 ### DeepSeek-R1-Distill-Llama-8B
 
-**API Endpoint**: `https://smpnet74-1--deepseek-r1-distill-llama-8b-serve.modal.run/v1`
+**ConfigID**: `pc-modal-7b241d`
 
 **Model Card**: [unsloth/DeepSeek-R1-Distill-Llama-8B](https://huggingface.co/unsloth/DeepSeek-R1-Distill-Llama-8B)
 
@@ -160,7 +161,7 @@ This model is particularly useful for applications requiring detailed reasoning 
 
 ### BGE-large-en-v1.5
 
-**API Endpoint**: `https://smpnet74-1--bge-large-en-v1-5-serve.modal.run/v1`
+**ConfigID**: `pc-modal-1a7579`
 
 **Model Card**: [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5)
 
@@ -182,7 +183,7 @@ Example usage involves sending text to the `/v1/embeddings` endpoint with a JSON
 
 ### Jina Reranker V2 Base Multilingual
 
-**API Endpoint**: `https://smpnet74-1--jina-reranker-v2-base-multilingual-serve-dev.modal.run/v1`
+**ConfigID**: `pc-modal-b951df`
 
 **Model Card**: [jinaai/jina-reranker-v2-base-multilingual](https://huggingface.co/jinaai/jina-reranker-v2-base-multilingual)
 
@@ -201,3 +202,20 @@ This model is particularly useful for:
 - Fine-tuning search results for domain-specific applications
 
 Example usage involves sending a query and a list of documents to the `/v1/rerank` endpoint, which returns the documents reordered by relevance score.
+
+### DeepSeek R1 Distill Llama 70b
+
+**ConfigID**: `pc-groq-d-6b723c`
+
+**Model Card**: You never know exactly which version or quant of a model an API provider delivers.
+
+The DeepSeek R1 Distill Llama 70b is a distilled version of the Llama 70B model, optimized for efficient reasoning and throughput. Hosted on Groq, this model supports a 32K context window and is suitable for applications requiring strong reasoning capabilities without tool use. 
+
+I do not pay for Groq so once you hit the limits of this model, you'll start to get errors.
+
+Key features include:
+- 32K context window
+- Reasoning enabled
+- Hosted on Groq hardware for high throughput (30 RPM, 1000 RPD)
+
+This model is ideal for tasks that benefit from extended context and detailed reasoning, such as multi-step problem solving, document analysis, and agentic workflows.
