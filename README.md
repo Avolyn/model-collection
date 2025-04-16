@@ -1,6 +1,6 @@
 # Scott's AI Model Collection
 
-This repository contains a collection of hosted AI models I find differentuated and useful for building Agentic AI applications.  I host on Runpod or Modal and the models deployed to utilize the full allowed context length without any rate limiting constraints.
+This repository contains a collection of hosted AI models I find differentuated and useful for building Agentic AI applications.  I host on [[Runpod](https://www.runpod.io)](https://www.runpod.io) or [Modal](https://modal.com) and the models deployed to utilize the full allowed context length without any rate limiting constraints.
 
 Unlike ALL commercial API providers that impose various limits even after payment, these models are configured without:
 
@@ -19,14 +19,14 @@ The table below provides detailed specifications for each model in this collecti
 
 | Model Name | ConfigID | Provider | Engine | Tool Calling | Reasoning | FlashInfer | Quantization | Context Window | GPU Type | GPU Count | RPM | RPH | RPD | Cache | LB |
 |------------|----------|----------|------------------|--------------|-----------|------------|--------------|----------------|----------|---------|-----|-----|-----|-------|----|
-| [Granite-3.2-8b-instruct](#granite-32-8b-instruct) | pc-modal-c07335 | Modal | VLLM 0.8.3 v1 | Yes | No | 0.2.5 | None | 128K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
-| [DeepHermes-3-Mistral-24B-Preview](#deephermes-3-mistral-24b-preview) | pc-model-08b0cd | Modal | VLLM 0.8.2 v0 | No | Yes*1 | 0.2.0.post2 | None | 32K | A100-80GB | 1 | Unlimited | Unlimited | Unlimited | None | None |
-| [Qwen2.5-Coder-32B-Instruct](#qwen25-coder-32b-instruct) | pc-modal-467df0 | Modal | VLLM 0.8.3 v1 | Yes | No | 0.2.0.post2 | GPTQ-Int4 (gptq_marlin) | 32K | A100-40GB | 1 | Unlimited | Unlimited | Unlimited | None | None |
-| [QwQ-32B-AWQ](#qwq-32b-awq) | pc-modal-19305a | Modal | VLLM 0.8.2 v0 | Yes | Yes | 0.2.0.post2 | AWQ | 32K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
-| [DeepSeek-R1-Distill-Llama-8B](#deepseek-r1-distill-llama-8b) | pc-modal-7b241d | Modal | VLLM 0.8.3 v0 | No | Yes | 0.2.0post2 | None | 32K | L4 | 2 | Unlimited | Unlimited | Unlimited | None | None |
-| [BGE-large-en-v1.5](#bge-large-en-v15) | pc-modal-1a7579 | Modal | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | T4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
-| [Jina Reranker V2 Base Multilingual](#jina-reranker-v2-base-multilingual) | pc-modal-b951df | Modal | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | L4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
-| [DeepSeek R1 Distill Llama 70b](#deepseek-r1-distill-llama-70b) | pc-groq-d-6b723c | Groq | N/A | No | Yes | N/A | Unknown | 32K | N/A | N/A | 30 | N/A | 1000 | None | None |
+| [Granite-3.2-8b-instruct](#granite-32-8b-instruct) | pc-modal-c07335 | [Modal](https://modal.com) | VLLM 0.8.3 v1 | Yes | No | 0.2.5 | None | 128K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [DeepHermes-3-Mistral-24B-Preview](#deephermes-3-mistral-24b-preview) | pc-model-08b0cd | [Modal](https://modal.com) | VLLM 0.8.2 v0 | No | Yes*1 | 0.2.0.post2 | None | 32K | A100-80GB | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [Qwen2.5-Coder-32B-Instruct](#qwen25-coder-32b-instruct) | pc-modal-467df0 | [Modal](https://modal.com) | VLLM 0.8.3 v1 | Yes | No | 0.2.0.post2 | GPTQ-Int4 (gptq_marlin) | 32K | A100-40GB | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [QwQ-32B-AWQ](#qwq-32b-awq) | pc-modal-19305a | [Modal](https://modal.com) | VLLM 0.8.2 v0 | Yes | Yes | 0.2.0.post2 | AWQ | 32K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [DeepSeek-R1-Distill-Llama-8B](#deepseek-r1-distill-llama-8b) | pc-modal-7b241d | [Modal](https://modal.com) | VLLM 0.8.3 v0 | No | Yes | 0.2.0post2 | None | 32K | L4 | 2 | Unlimited | Unlimited | Unlimited | None | None |
+| [BGE-large-en-v1.5](#bge-large-en-v15) | pc-modal-1a7579 | [Modal](https://modal.com) | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | T4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [Jina Reranker V2 Base Multilingual](#jina-reranker-v2-base-multilingual) | pc-modal-b951df | [Modal](https://modal.com) | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | L4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [DeepSeek R1 Distill Llama 70b](#deepseek-r1-distill-llama-70b) | pc-groq-d-6b723c | [Groq](https://www.groq.com) | N/A | No | Yes | N/A | Unknown | 32K | N/A | N/A | 30 | N/A | 1000 | None | None |
 
 *1 - Reasoning is toggled via the prompt
 
@@ -37,7 +37,7 @@ The models I host are deployed on a containerized serverless capability. To save
 
 The models I have deployed are great for batch AI or agentic applications.  They can also be used for real time application with the disclaimer of the container start time.  Most models under 14B will start in 3 minutes or less.  As the models grow in size, so does the container start time so be aware.
 
-Keep in mind that I store the models that run on Modal on Modal volumes because Modal does not charge for that storage.  These models will cold start more quickly than on Runpod.  Runpod likes to charge for that feature so I load the models in realtime from Huggingface which introduces an additional cold start delay.  In addition, in some examples where I have decided to use then TensorRT-LLM engine, those models are compiled directly into the container image, so of course those will start more quickly.
+Keep in mind that I store the models that run on [Modal](https://modal.com) on [Modal](https://modal.com) volumes because [Modal](https://modal.com) does not charge for that storage.  These models will cold start more quickly than on [[Runpod](https://www.runpod.io)](https://www.runpod.io).  [[Runpod](https://www.runpod.io)](https://www.runpod.io) likes to charge for that feature so I load the models in realtime from Huggingface which introduces an additional cold start delay.  In addition, in some examples where I have decided to use then TensorRT-LLM engine, those models are compiled directly into the container image, so of course those will start more quickly.
 
 ## Testing
 
@@ -45,15 +45,17 @@ Each model has been painstakenly tested and deployed for the best price and perf
 
 ## Performance
 
-The models I host are host on Modal run in either AWS and GCP.  I don't have any control over the hyperscaler regions, but from my testing they all deploy to domestic endpoints.  The models I host on Runpod execute on Runpod hardware in their secure cloud, rather than the community cloud, and are hosted domestically.  With that said, both providers will scale to thousands of GPU's and containers if you apply pressure to the endpoint.  Of course I ask you to be responsible as we all know GPU's are not free and the GPU price per ounce costs are more expensive than gold.  I do have budgets in place if a mistake is made and you scale up 10k containers so no need to worry about that on your end.
+The models I host are host on [Modal](https://modal.com) run in either AWS and GCP.  I don't have any control over the hyperscaler regions, but from my testing they all deploy to domestic endpoints.  The models I host on [[Runpod](https://www.runpod.io)](https://www.runpod.io) execute on [[Runpod](https://www.runpod.io)](https://www.runpod.io) hardware in their secure cloud, rather than the community cloud, and are hosted domestically.  With that said, both providers will scale to thousands of GPU's and containers if you apply pressure to the endpoint.  Of course I ask you to be responsible as we all know GPU's are not free and the GPU price per ounce costs are more expensive than gold.  I do have budgets in place if a mistake is made and you scale up 10k containers so no need to worry about that on your end.
 
 ## Security
 
 I originally exposed the raw model endpoints, but I have since interjected an AI gatway layer in the form of Portkey.  The main reason I have done this is to add model routing and load balancing, model fallbacks, caching, and security features to some of the models I host.  My original idea was to host the gateway myself in the form of Litellm or Kong AI Gateway, I have used both gateways extensively, but I decided that I didn't want the care and feeding of a production level kube cluster and deal with all that goes along with hosting those gateways by hand.  You will see in the model table that some of the models I host have a LB (Load Balancing) and Cache feature enabled.  Those are portkey configurations, and have nothing to do with how the models are deployed for inference.
 
-It is stupid simple to inject call backs and various configurations into model hosting to log requests and responses.  You have my word that I don't do any of that with the models I host.  For the models that are delivered via an API provider like Sambanova, I have no control over what they do with your data.  As I add providers over time, if the provider offers the ability to disable caching and logging I will do that, but in the case of Sambanova, I have no control over what they do with your data.  Buyer Beware.
+It is stupid simple to inject call backs and various configurations into model hosting to log requests and responses.  You have my word that I don't do any of that with the models I host.  For the models that are delivered via an API provider like [Sambanova](https://sambanova.ai), I have no control over what they do with your data.  As I add providers over time, if the provider offers the ability to disable caching and logging I will do that, but in the case of [Sambanova](https://sambanova.ai), I have no control over what they do with your data.  Buyer Beware.
 
 Given that everything goes thru Portkey, you need to be aware that your requests and responses are being logged unless you follow this guide https://portkey.ai/docs/product/observability/logs#do-not-track.  Of course any model that is configured for caching is going to cache your requests and responses regardless of what you do with your client side settings so buyer beware.
+
+Lastly, I am sure someone will commit their API key to github.  When that happens and my watchdog service catches it, the API key will be rotated and the old key will be disabled.  If for some reason you can't access the services, its because I am a poor programmer and the key was rotated via the watchdog by mistake.  If that happens, just reach out to me and I'll get you the new key.  Hopefully that wont happen often :)
 
 ## Cost
 
@@ -94,8 +96,8 @@ I plan to add more models to this collection over time.  If you have a model you
 5. ✅ DeepSeek-R1-Distill-Llama-8B - Added!
 6. ✅ Jina Reranker V2 Base Multilingual - Added!
 7. ✅ DeepSeek R1 Distill Llama 70b - Added!
-8. Sambanova models
-9. Runpod deployed models
+8. [Sambanova](https://sambanova.ai) models
+9. [[Runpod](https://www.runpod.io)](https://www.runpod.io) deployed models
 10. Load balancing and Caching examples
 11. Baseten hosting
 12. Bedrock models
@@ -218,13 +220,13 @@ Example usage involves sending a query and a list of documents to the `/v1/reran
 
 **Model Card**: You never know exactly which version or quant of a model an API provider delivers.
 
-The DeepSeek R1 Distill Llama 70b is a distilled version of the Llama 70B model, optimized for efficient reasoning and throughput. Hosted on Groq, this model supports a 32K context window and is suitable for applications requiring strong reasoning capabilities without tool use.  When prompted with "Please show your thinking" or similar instructions, the model will demonstrate its reasoning process before providing a final answer.  Sometimes it shows its work when you don't ask for it to do so which I find troublesome if what I have developed isn't setup to handle that information so know that you might get some unexpected results.
+The DeepSeek R1 Distill Llama 70b is a distilled version of the Llama 70B model, optimized for efficient reasoning and throughput. Hosted on [Groq](https://www.groq.com), this model supports a 32K context window and is suitable for applications requiring strong reasoning capabilities without tool use.  When prompted with "Please show your thinking" or similar instructions, the model will demonstrate its reasoning process before providing a final answer.  Sometimes it shows its work when you don't ask for it to do so which I find troublesome if what I have developed isn't setup to handle that information so know that you might get some unexpected results.
 
-I do not pay for Groq so once you hit the limits of this model, you'll start to get errors.
+I do not pay for [Groq](https://www.groq.com) so once you hit the limits of this model, you'll start to get errors.
 
 Key features include:
 - 32K context window
 - Reasoning enabled
-- Hosted on Groq hardware for high throughput (30 RPM, 1000 RPD)
+- Hosted on [Groq](https://www.groq.com) hardware for high throughput (30 RPM, 1000 RPD)
 
-This model is ideal for tasks that benefit from extended context and detailed reasoning, such as multi-step problem solving, document analysis, and agentic workflows.  Groq is blazing fast, must faster than anything I could deliver using Nvidia GPU's and I use it for tasks requiring that speed.
+This model is ideal for tasks that benefit from extended context and detailed reasoning, such as multi-step problem solving, document analysis, and agentic workflows.  [Groq](https://www.groq.com) is blazing fast, must faster than anything I could deliver using Nvidia GPU's and I use it for tasks requiring that speed.
