@@ -89,7 +89,16 @@ I plan to add more models to this collection over time.  If you have a model you
 
 1. ✅ Deepseek R1 Distill model - Added!
 2. ✅ BGE-large-en-v1.5 - Added!
-3. ?
+3. ✅ Qwen2.5-Coder-32B-Instruct - Added!
+4. ✅ QwQ-32B-AWQ - Added!
+5. ✅ DeepSeek-R1-Distill-Llama-8B - Added!
+6. ✅ Jina Reranker V2 Base Multilingual - Added!
+7. ✅ DeepSeek R1 Distill Llama 70b - Added!
+8. Sambanova models
+9. Runpod deployed models
+10. Load balancing and Caching examples
+11. Baseten hosting
+12. Bedrock models
 
 
 ## Model Notes
@@ -157,7 +166,7 @@ Key features include:
 - 32K token context window
 - Optimized for showing step-by-step thinking when prompted with reasoning questions
 
-This model is particularly useful for applications requiring detailed reasoning processes while maintaining reasonable inference speeds and resource requirements. When prompted with "Please show your thinking" or similar instructions, the model will demonstrate its reasoning process before providing a final answer.
+This model is particularly useful for applications requiring detailed reasoning processes while maintaining reasonable inference speeds and resource requirements. When prompted with "Please show your thinking" or similar instructions, the model will demonstrate its reasoning process before providing a final answer.  Sometimes it shows its work when you don't ask for it to do so which I find troublesome if what I have developed isn't setup to handle that information so know that you might get some unexpected results.
 
 ### BGE-large-en-v1.5
 
@@ -209,7 +218,7 @@ Example usage involves sending a query and a list of documents to the `/v1/reran
 
 **Model Card**: You never know exactly which version or quant of a model an API provider delivers.
 
-The DeepSeek R1 Distill Llama 70b is a distilled version of the Llama 70B model, optimized for efficient reasoning and throughput. Hosted on Groq, this model supports a 32K context window and is suitable for applications requiring strong reasoning capabilities without tool use. 
+The DeepSeek R1 Distill Llama 70b is a distilled version of the Llama 70B model, optimized for efficient reasoning and throughput. Hosted on Groq, this model supports a 32K context window and is suitable for applications requiring strong reasoning capabilities without tool use.  When prompted with "Please show your thinking" or similar instructions, the model will demonstrate its reasoning process before providing a final answer.  Sometimes it shows its work when you don't ask for it to do so which I find troublesome if what I have developed isn't setup to handle that information so know that you might get some unexpected results.
 
 I do not pay for Groq so once you hit the limits of this model, you'll start to get errors.
 
@@ -218,4 +227,4 @@ Key features include:
 - Reasoning enabled
 - Hosted on Groq hardware for high throughput (30 RPM, 1000 RPD)
 
-This model is ideal for tasks that benefit from extended context and detailed reasoning, such as multi-step problem solving, document analysis, and agentic workflows.
+This model is ideal for tasks that benefit from extended context and detailed reasoning, such as multi-step problem solving, document analysis, and agentic workflows.  Groq is blazing fast, must faster than anything I could deliver using Nvidia GPU's and I use it for tasks requiring that speed.
