@@ -17,7 +17,7 @@ You may ask, why not any hosting from Azure, GCP, or AWS.  Well the simple answe
 
 ## Model Specifications
 
-The table below provides detailed specifications for each model in this collection:
+The table below (which scrolls if you drag it to the left) provides detailed specifications for each model in this collection:
 
 | Model Name | ConfigID | Provider | Engine | Tool Calling | Reasoning | FlashInfer | Quantization | Context Window | GPU Type | GPU Count | RPM | RPH | RPD | Cache | LB |
 |------------|----------|----------|------------------|--------------|-----------|------------|--------------|----------------|----------|---------|-----|-----|-----|-------|----|
@@ -47,15 +47,15 @@ Each model has been painstakenly tested and deployed for the best price and perf
 
 ## Performance
 
-The models I host are host on [Modal](https://modal.com) run in either AWS and GCP.  I don't have any control over the hyperscaler regions, but from my testing they all deploy to domestic endpoints.  The models I host on [Runpod](https://www.runpod.io) execute on [Runpod](https://www.runpod.io) hardware in their secure cloud, rather than the community cloud, and are hosted domestically.  With that said, both providers will scale to thousands of GPU's and containers if you apply pressure to the endpoint.  Of course I ask you to be responsible as we all know GPU's are not free and the GPU price per ounce costs are more expensive than gold.  I do have budgets in place if a mistake is made and you scale up 10k containers so no need to worry about that on your end.
+The models I host on [Modal](https://modal.com) run in either AWS and GCP.  I don't have any control over the hyperscaler regions, but from my testing they all deploy to domestic endpoints.  The models I host on [Runpod](https://www.runpod.io) execute on [Runpod](https://www.runpod.io) hardware in their secure cloud, rather than the community cloud, and are hosted domestically.  With that said, both providers will scale to thousands of GPU's and containers if you apply pressure to the endpoint.  Of course I ask you to be responsible as we all know GPU's are not free and the GPU price per ounce costs are more expensive than gold.  I do have budgets in place if a mistake is made and you scale up 10k containers so no need to worry about that on your end.
 
 ## Security
 
-I originally exposed the raw model endpoints, but I have since interjected an AI gatway layer in the form of Portkey.  The main reason I have done this is to add model routing and load balancing, model fallbacks, caching, and security features to some of the models I host.  My original idea was to host the gateway myself in the form of Litellm or Kong AI Gateway, I have used both gateways extensively, but I decided that I didn't want the care and feeding of a production level kube cluster and deal with all that goes along with hosting those gateways by hand.  You will see in the model table that some of the models I host have a LB (Load Balancing) and Cache feature enabled.  Those are portkey configurations, and have nothing to do with how the models are deployed for inference.
+I originally exposed the raw model endpoints, but I have since interjected an AI gatway layer in the form of [Portkey](https://portkey.ai).  The main reason I have done this is to add model routing and load balancing, model fallbacks, caching, and security features to some of the models I host.  My original idea was to host the gateway myself in the form of Litellm or Kong AI Gateway, I have used both gateways extensively, but I decided that I didn't want the care and feeding of a production level kube cluster and deal with all that goes along with hosting those gateways by hand.  You will see in the model table that some of the models I host have a LB (Load Balancing) and Cache feature enabled.  Those are portkey configurations, and have nothing to do with how the models are deployed for inference.
 
 It is stupid simple to inject call backs and various configurations into model hosting to log requests and responses.  You have my word that I don't do any of that with the models I host.  For the models that are delivered via an API provider like [Sambanova](https://sambanova.ai), I have no control over what they do with your data.  As I add providers over time, if the provider offers the ability to disable caching and logging I will do that, but in the case of [Sambanova](https://sambanova.ai), I have no control over what they do with your data.  Buyer Beware.
 
-Given that everything goes thru Portkey, you need to be aware that your requests and responses are being logged unless you follow this guide https://portkey.ai/docs/product/observability/logs#do-not-track.  Of course any model that is configured for caching is going to cache your requests and responses regardless of what you do with your client side settings so buyer beware.
+Given that everything goes thru [Portkey](https://portkey.ai), you need to be aware that your requests and responses are being logged unless you follow this guide https://portkey.ai/docs/product/observability/logs#do-not-track.  Of course any model that is configured for caching is going to cache your requests and responses regardless of what you do with your client side settings so buyer beware.
 
 Lastly, I am sure someone will commit their API key to github.  When that happens and my watchdog service catches it, the API key will be rotated and the old key will be disabled.  If for some reason you can't access the services, its because I am a poor programmer and the key was rotated via the watchdog by mistake.  If that happens, just reach out to me and I'll get you the new key.  Hopefully that wont happen often :)
 
@@ -75,9 +75,9 @@ Once deployed, you can interact with the models using the OpenAI Python client l
 Example:
 ```python
 # pip install portkey_ai
-from portkey_ai import Portkey
+from portkey_ai import [Portkey](https://portkey.ai)
 # Construct a client with a virtual key
-portkey = Portkey(
+portkey = [Portkey](https://portkey.ai)(
   api_key="{INSERTHEKEYIGAVEYOUHERE}",
   #virtual_key="openai-test1-accd5d",
   config="{INSERTTHECONFIGFROMTHEMODELTABLEHERE}"
