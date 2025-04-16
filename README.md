@@ -1,6 +1,6 @@
 # Scott's AI Model Collection
 
-This repository contains a collection of hosted AI models I find differentuated and useful for building Agentic AI applications.  I host on [[Runpod](https://www.runpod.io)](https://www.runpod.io) or [Modal](https://modal.com) and the models deployed to utilize the full allowed context length without any rate limiting constraints.
+This repository contains a collection of hosted AI models I find differentuated and useful for building Agentic AI applications.  I host on [Runpod](https://www.runpod.io) or [Modal](https://modal.com) and the models deployed to utilize the full allowed context length without any rate limiting constraints.
 
 Unlike ALL commercial API providers that impose various limits even after payment, these models are configured without:
 
@@ -37,7 +37,7 @@ The models I host are deployed on a containerized serverless capability. To save
 
 The models I have deployed are great for batch AI or agentic applications.  They can also be used for real time application with the disclaimer of the container start time.  Most models under 14B will start in 3 minutes or less.  As the models grow in size, so does the container start time so be aware.
 
-Keep in mind that I store the models that run on [Modal](https://modal.com) on [Modal](https://modal.com) volumes because [Modal](https://modal.com) does not charge for that storage.  These models will cold start more quickly than on [[Runpod](https://www.runpod.io)](https://www.runpod.io).  [[Runpod](https://www.runpod.io)](https://www.runpod.io) likes to charge for that feature so I load the models in realtime from Huggingface which introduces an additional cold start delay.  In addition, in some examples where I have decided to use then TensorRT-LLM engine, those models are compiled directly into the container image, so of course those will start more quickly.
+Keep in mind that I store the models that run on [Modal](https://modal.com) on modal volumes because [Modal](https://modal.com) does not charge for that storage.  These models will cold start more quickly than on [Runpod](https://www.runpod.io).  Runpod likes to charge for that feature so I load the models in realtime from Huggingface which introduces an additional cold start delay.  In addition, in some examples where I have decided to use then TensorRT-LLM engine, those models are compiled directly into the container image, so of course those will start more quickly.
 
 ## Testing
 
@@ -45,7 +45,7 @@ Each model has been painstakenly tested and deployed for the best price and perf
 
 ## Performance
 
-The models I host are host on [Modal](https://modal.com) run in either AWS and GCP.  I don't have any control over the hyperscaler regions, but from my testing they all deploy to domestic endpoints.  The models I host on [[Runpod](https://www.runpod.io)](https://www.runpod.io) execute on [[Runpod](https://www.runpod.io)](https://www.runpod.io) hardware in their secure cloud, rather than the community cloud, and are hosted domestically.  With that said, both providers will scale to thousands of GPU's and containers if you apply pressure to the endpoint.  Of course I ask you to be responsible as we all know GPU's are not free and the GPU price per ounce costs are more expensive than gold.  I do have budgets in place if a mistake is made and you scale up 10k containers so no need to worry about that on your end.
+The models I host are host on [Modal](https://modal.com) run in either AWS and GCP.  I don't have any control over the hyperscaler regions, but from my testing they all deploy to domestic endpoints.  The models I host on [Runpod](https://www.runpod.io) execute on [Runpod](https://www.runpod.io) hardware in their secure cloud, rather than the community cloud, and are hosted domestically.  With that said, both providers will scale to thousands of GPU's and containers if you apply pressure to the endpoint.  Of course I ask you to be responsible as we all know GPU's are not free and the GPU price per ounce costs are more expensive than gold.  I do have budgets in place if a mistake is made and you scale up 10k containers so no need to worry about that on your end.
 
 ## Security
 
