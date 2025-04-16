@@ -1,6 +1,6 @@
 # Scott's AI Model Collection
 
-This repository contains a collection of hosted AI models I find differentuated and useful for building Agentic AI applications. Each model is set up to utilize the full allowed context length without any rate limiting constraints.
+This repository contains a collection of hosted AI models I find differentuated and useful for building Agentic AI applications.  I host on Runpod or Modal and are set up to utilize the full allowed context length without any rate limiting constraints.
 
 Unlike ALL commercial API providers that impose various limits even after payment, these models are configured without:
 
@@ -9,63 +9,77 @@ Unlike ALL commercial API providers that impose various limits even after paymen
 - TPM (Tokens per minute) limits
 - TPD (Tokens per day) limits
 
-This makes them ideal for development, testing, and production use cases where predictable performance is essential.
+This makes the my hosted models ideal where predictable performance is essential.  There is nothing more frusterating to get rate limited just when you get your agentic application to a point where its functioning as designed.
 
-## Deployment
-
-The models are deployed on a containerized serverless capability. To save on costs, each model will scale to zero when not in use.  If a model has scaled down, it will take a few minutes for the model and associated container to cold start on fresh use.  If you want to warm up the model before use, you can send a POST to the /docs endpoint rather than the OpenAI API /vi endpoint.  Containers currently run for 10 minutes without an active call before scaling down.  In my experience, as you are interating on code, you usually execute, think for 3 to 6 minutes, modify code, and execute again so 10 minutes is more than enough time to keep the container warm and keep you out of cold start hell.
-
-## Testing
-
-Each model has been painstakenly tested and deployed for the best price and performance GPU configuration.  You will notice by looking at the various hugging face repo's that some of these models might memorywise fit on a single GPU, but are deployed with multiple GPUs.  This is because I wasn't satisfied with the single GPU inference response times.  In addition, there are no advanced Nvidia features in use here, I found after wasting hundreds of hours, the most performant delivery of a model is always exclusive GPU's attached per container.
-
-## Performance
-
-These models are hosted on both AWS and GCP and will scale to thousands of GPU's and containers if you apply pressure to the endpoint.  Of course I ask you to be responsible as we all know GPU's are not free and the GPU price per ounce costs are more expensive than gold.  I do have budgets in place if a mistake is made, and you scale up 10k containers so no need to worry about that on your end.
-
-## Security
-
-It is stupid simple to inject callbacks into model hosting to capture/store prompts and responses sent and received from models.  You have my word that there is none of that here.  Your request goes directly to the model and is returned back to you.  There are no AI gateways in play, no model API wrappers or OpenAI class modifications.  Just pure inference.  Further, when the container scales to zero, the model and its KV cache is completely destroyed and unrecoverable.
-
-## A note from the developer
-
-Developing AI applications can be frusterating.  I found developing agentic AI apps over the past year using local models via Ollama or LMStudio often relegated me to make concessions on quantization levels or dealing with the limitations of not having the ability to scale.  In addition, I found dealing with the API providers was rate limited, expensive, and very frusterating when I didn't have complete control over the model, the engine it was running, and its configuration.  Plus I find very few of the API providers other than the frontier models (GPT, Gemini, Claude, Cohere, etc) deliver models that will handle tool calling.  One of my favorite API hosting organizations, [SambaNova](https://sambanova.ai/), doesn't host a single model that supports tool calling.  My other favorite provider [Groq](https://groq.com/), rate limits to the moon and some of the model context configuration is lack luster.  But they do both still deliver value when inference speed is paramount as they have processing hardware that isn't available in the market.
+I also am including models from various providers that I use on a regular basis that have reasonable limits.  The detail of those limits are outlined in the table below.
 
 ## Model Specifications
 
 The table below provides detailed specifications for each model in this collection:
 
-| Model Name | Inference Engine | Tool Calling | Reasoning | FlashInfer | Quantization | Context Window | GPU Type | GPU Count |
-|------------|-------------|--------------|-----------|------------|--------------|----------------|----------|---------|
-| [Granite-3.2-8b-instruct](#granite-32-8b-instruct) | VLLM 0.8.3 v1 | Yes | No | 0.2.5 | None | 131K | L40S | 1 |
-| [DeepHermes-3-Mistral-24B-Preview](#deephermes-3-mistral-24b-preview) | VLLM 0.8.2 v0 | No | Yes | 0.2.0.post2 | None | 32K | A100-80GB | 1 |
-| [Qwen2.5-Coder-32B-Instruct](#qwen25-coder-32b-instruct) | VLLM 0.8.3 v1 | Yes | No | 0.2.0.post2 | GPTQ-Int4 (gptq_marlin) | 32K | A100-40GB | 1 |
-| [QwQ-32B-AWQ](#qwq-32b-awq) | VLLM 0.8.2 v0 | Yes | Yes | 0.2.0.post2 | AWQ | 32K | L40S | 1 |
-| [DeepSeek-R1-Distill-Llama-8B](#deepseek-r1-distill-llama-8b) | VLLM 0.8.3 v0 | No | Yes | Yes | None | 32K | L4 | 2 |
-| [BGE-large-en-v1.5](#bge-large-en-v15) | VLLM 0.8.3 v0 | No | No | No | None | N/A | T4 | 1 |
-| [Jina Reranker V2 Base Multilingual](#jina-reranker-v2-base-multilingual) | VLLM 0.8.3 v0 | No | No | No | None | N/A | L4 | 1 |
+| Model Name | ConfigID | Provider | Engine | Tool Calling | Reasoning | FlashInfer | Quantization | Context Window | GPU Type | GPU Count | RPM | RPH | RPD | Cache | LB |
+|------------|----------|----------|------------------|--------------|-----------|------------|--------------|----------------|----------|---------|-----|-----|-----|-------|----|
+| [Granite-3.2-8b-instruct](#granite-32-8b-instruct) | pc-modal-c07335 | Modal | VLLM 0.8.3 v1 | Yes | No | 0.2.5 | None | 128K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [DeepHermes-3-Mistral-24B-Preview](#deephermes-3-mistral-24b-preview) | pc-model-08b0cd | Modal | VLLM 0.8.2 v0 | No | Yes*1 | 0.2.0.post2 | None | 32K | A100-80GB | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [Qwen2.5-Coder-32B-Instruct](#qwen25-coder-32b-instruct) | pc-modal-467df0 | Modal | VLLM 0.8.3 v1 | Yes | No | 0.2.0.post2 | GPTQ-Int4 (gptq_marlin) | 32K | A100-40GB | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [QwQ-32B-AWQ](#qwq-32b-awq) | pc-modal-19305a | Modal | VLLM 0.8.2 v0 | Yes | Yes | 0.2.0.post2 | AWQ | 32K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [DeepSeek-R1-Distill-Llama-8B](#deepseek-r1-distill-llama-8b) | pc-modal-7b241d | Modal | VLLM 0.8.3 v0 | No | Yes | 0.2.0post2 | None | 32K | L4 | 2 | Unlimited | Unlimited | Unlimited | None | None |
+| [BGE-large-en-v1.5](#bge-large-en-v15) | pc-modal-1a7579 | Modal | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | T4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [Jina Reranker V2 Base Multilingual](#jina-reranker-v2-base-multilingual) | pc-modal-b951df | Modal | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | L4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
+
+*1 - Reasoning is toggled via the prompt
+
+
+## Deployment
+
+The models I host are deployed on a containerized serverless capability. To save on costs, each model will scale to zero when not in use.  If a model has scaled down, it will take a few minutes for the model and associated container to cold start on fresh use.  If you want to warm up the model before use, you can send a POST to the /docs or /health endpoint which will warm up the model and associated container.  Containers currently run for 10 minutes without an active call before scaling down.  In my experience, as you are interating on code, you usually execute, think for 3 to 6 minutes, modify code, and execute again so 10 minutes is more than enough time to keep the container warm and keep you out of cold start hell.
+
+The models I have deployed are great for batch AI or agentic applications.  They can also be used for real time application with the disclaimer of the container start time.  While I host the models on the providers and do not pull them from Huggingface on each start, there still is a startup cost.  Most models under 14B will start in 3 minutes or less.  As the models grow in size, so does the container start time so be aware.
+
+Keep in mind that I store the models that run on Modal on Modal volumes because Modal does not charge for that storage.  These models will cold start more quickly than on Runpod.  Runpod likes to charge for that feature so I load the models in realtime from Huggingface which introduces an additional cold start delay.
+
+## Testing
+
+Each model has been painstakenly tested and deployed for the best price and performance GPU configuration.  You will notice by looking at the various hugging face repo's that some of these models might memorywise fit on a single GPU, but are deployed with multiple GPUs.  This is because I wasn't satisfied with the single GPU inference response times.  You might also notice some smaller models hosted on GPU's that seem overpowered to run the model.  Again, this is because I wasn't satisfied with the TPS performance or some other factor that influenced me to step up in GPU size.  In addition, with the models I host, there are no advanced Nvidia features in use (mig, timeslicing, and so on), I found after wasting hundreds of hours the most performant delivery of a model is always exclusive GPU(s) attached per container.
+
+## Performance
+
+The models I host are host on Modal run in either AWS and GCP.  I don't have any control over the hyperscaler regions, but from my testing they all deploy to domestic endpoints.  The models I host on Runpod execute on Runpod hardware in their secure cloud, rather than the community cloud, and are hosted domestically.  With that said, both providers will scale to thousands of GPU's and containers if you apply pressure to the endpoint.  Of course I ask you to be responsible as we all know GPU's are not free and the GPU price per ounce costs are more expensive than gold.  I do have budgets in place if a mistake is made and you scale up 10k containers so no need to worry about that on your end.
+
+## Security
+
+I originally exposed the raw endpoints for the models I host, but I have since interjected an AI gatway layer in the form of Portkey.  The main reason I have done this is to add model routing and load balancing, model fallbacks, caching, and security features to some of the models I host.  My original idea was to host the gateway myself in the form of Litellm or Kong AI Gateway, I have used both gateways extensively, but I decided that I didn't want the care and feeding of a production level kube cluster and deal with the care and feeding that goes along with hosting those gateways by hand.  You will see in the model table that some of the models I host have a LB (Load Balancing) and Cache feature enabled.
+
+It is stupid simple to inject call backs and various configurations into model hosting to log requests and responses.  You have my word that I don't do any of that with the models I host.  For the models that are delivered via an API provider like Sambanova, I have no control over what they do with your data.  As I add providers over time, if the provider offers the ability to disable caching and logging I will do that, but in the case of Sambanova, I have no control over what they do with your data.  Buyer Beware.
+
+Given that everything goes thru Portkey, you need to be aware that your requests and responses are being logged unless you follow this guide https://portkey.ai/docs/product/observability/logs#do-not-track.  Of course any model that is configured for caching is going to cache your requests and responses regardless of what you do with your client side settings so buyer beware.
+
+## Cost
+
+All of this goodness comes at an expense which I am covering for you.  Use it freely.  I would rather have knowledgable architects that are thinking, building, and testing new ideas, frameworks, and tech than to have you skip the realization of your ideas because its a pain to have to deal with spreading your credit card all over the internet.  I may put a donation link here eventually, but for now, I would rather just cover the costs to see what you build!
+
+## A note from the developer
+
+Developing AI applications can be frusterating.  I found developing agentic AI apps over the past year using local models via Ollama or LMStudio often relegated me to make concessions on quantization levels or dealing with the limitations of not having the ability to scale.  Plus developing on the desktop is slow.  In addition, I found dealing with the API providers was rate limited, expensive, and very frusterating when I didn't have complete control over the model, the engine it was running, and its configuration.  But there is a happy medium.  Some of what I have built uses the models I host for the heavy lifting, and when I need an LLM as a judge or to do some kind of evaluation I'll use an API provider.
 
 ## Usage
 
 Once deployed, you can interact with the models using the OpenAI Python client library or any HTTP client that supports the OpenAI API format. Authentication is handled via API keys.
 
+
 Example:
 ```python
-from openai import OpenAI
-
-client = OpenAI(
-    api_key="your_api_key",
-    base_url="https://your-deployment-url"
+# pip install portkey_ai
+from portkey_ai import Portkey
+# Construct a client with a virtual key
+portkey = Portkey(
+  api_key="{INSERTHEKEYIGAVEYOUHERE}",
+  #virtual_key="openai-test1-accd5d",
+  config="{INSERTTHECONFIGFROMTHEMODELTABLEHERE}"
 )
-
-response = client.chat.completions.create(
-    model="granite-3.2-8b-instruct",
-    messages=[
-        {"role": "user", "content": "Hello, how can you help me today?"}
-    ]
-)
-
-print(response.choices[0].message.content)
+completion = portkey.chat.completions.create(
+  messages = [{ "role": 'user', "content": 'Why does my dog like to lick his butt' }])
+print(completion)
 ```
 
 ## Roadmap
@@ -74,24 +88,24 @@ I plan to add more models to this collection over time.  If you have a model you
 
 1. ✅ Deepseek R1 Distill model - Added!
 2. ✅ BGE-large-en-v1.5 - Added!
-3. Cogoto hybrid reasoning model
+3. ?
 
 
 ## Model Notes
 
 ### Granite-32-8b-instruct
 
-**API Endpoint**: `https://smpnet74-1--granite-3-2-8b-instruct-serve.modal.run/v1`
+**ConfigID**: `pc-modal-c07335`
 
-**Model Card**: [IBM/granite-3.2-8b-instruct](https://huggingface.co/IBM/granite-3.2-8b-instruct)
+**Model Card**: [IBM/granite-3.2-8b-instruct](https://huggingface.co/ibm-granite/granite-3.2-8b-instruct)
 
 The Granite-3.2-8b-instruct model is IBM's 8B parameter instruction-tuned model that excels at following instructions and tool calling.
 
-I use this model almost exclusively for tool calling because its one of the few tool calling models that works flawlessly at 8b parameters.  The llama and qwen model family has struggled for me with tool calling in the smaller versions.
+I use this model quite a bit for tool calling because its one of the few tool calling models that works at 8b parameters and its cheap to host.  The llama and qwen model family has struggled for me with tool calling in the smaller versions.
 
 ### DeepHermes-3-Mistral-24B-Preview
 
-**API Endpoint**: `https://smpnet74-1--deephermes-3-mistral-24b-preview-serve.modal.run/v1`
+**ConfigID**: `pc-model-08b0cd`
 
 **Model Card**: [NousResearch/DeepHermes-3-Mistral-24B-Preview](https://huggingface.co/NousResearch/DeepHermes-3-Mistral-24B-Preview)
 
