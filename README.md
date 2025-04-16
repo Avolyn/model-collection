@@ -1,6 +1,6 @@
 # Scott's AI Model Collection
 
-This repository contains a collection of hosted AI models I find differentuated and useful for building Agentic AI applications.  I host on [Runpod](https://www.runpod.io) or [Modal](https://modal.com) and the models deployed to utilize the full allowed context length without any rate limiting constraints.
+This repository contains a collection of hosted AI models I find differentuated and useful for building Agentic AI applications.  I host on [Runpod](https://www.runpod.io) or [Modal](https://modal.com) and the models deployed to those providers are configured  utilize the full allowed context length without any rate limiting constraints.
 
 Unlike ALL commercial API providers that impose various limits even after payment, these models are configured without:
 
@@ -12,6 +12,8 @@ Unlike ALL commercial API providers that impose various limits even after paymen
 This makes the my hosted models ideal where predictable performance is essential.  There is nothing more frusterating to get rate limited just when you get your agentic application to a point where its functioning as designed.
 
 I also am including models from various providers that I use on a regular basis that have reasonable limits.  The detail of those limits are outlined in the table below.
+
+You may ask, why not any hosting from Azure, GCP, or AWS.  Well the simple answer is they charge a fortune for their GPU's and I am not made of money.  If that doesn't make sense to you, I highly suggest you spend some time with this [Kelsey Hightower](https://github.com/kelseyhightower/nocode) project before you try to write any AI apps.
 
 ## Model Specifications
 
@@ -97,10 +99,11 @@ I plan to add more models to this collection over time.  If you have a model you
 6. ✅ Jina Reranker V2 Base Multilingual - Added!
 7. ✅ DeepSeek R1 Distill Llama 70b - Added!
 8. [Sambanova](https://sambanova.ai) models
-9. [[Runpod](https://www.runpod.io)](https://www.runpod.io) deployed models
+9. [Runpod](https://www.runpod.io) deployed models
 10. Load balancing and Caching examples
 11. Baseten hosting
 12. Bedrock models
+13. Same model deployed in same configuration with VLLM, TensorRT, and SGLang for performance testing.
 
 
 ## Model Notes
