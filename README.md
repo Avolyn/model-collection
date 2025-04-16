@@ -101,9 +101,9 @@ I plan to add more models to this collection over time.  If you have a model you
 8. [Sambanova](https://sambanova.ai) models
 9. [Runpod](https://www.runpod.io) deployed models
 10. Load balancing and Caching examples
-11. Baseten hosting
+11. [Baseten](https://www.baseten.co) hosting
 12. Bedrock models
-13. Same model deployed in same configuration with VLLM, TensorRT, and SGLang for performance testing.
+13. Same model deployed in same configuration with [VLLM](https://github.com/vllm-project/vllm), [TensorRT](https://developer.nvidia.com/tensorrt), [SGLang](https://github.com/InternLM/sglang), and [Ollama](https://ollama.ai) for performance testing across the engines.
 
 
 ## Model Notes
@@ -157,6 +157,8 @@ I also have found that the int4 awq quantized version works just as well as full
 QwQ-32B-AWQ is Qwen's specialized reasoning model with 32B parameters, quantized using AWQ to 4-bit precision. This model is particularly strong at mathematical reasoning, scientific analysis, and complex problem-solving tasks.
 
 What makes this model special is its dual capabilities - it combines both tool calling and reasoning in a single model. The reasoning is implemented using the DeepSeek-R1 reasoning parser, which allows the model to show its step-by-step thinking process before providing a final answer.
+
+I am particularly partial to the Qwen model family for just about everything and this model is no exception.
 
 ### DeepSeek-R1-Distill-Llama-8B
 
