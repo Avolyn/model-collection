@@ -29,7 +29,7 @@ The table below (which scrolls if you drag it to the left) provides detailed spe
 | [BGE-large-en-v1.5](#bge-large-en-v15) | pc-modal-1a7579 | [Modal](https://modal.com) | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | T4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [Jina Reranker V2 Base Multilingual](#jina-reranker-v2-base-multilingual) | pc-modal-b951df | [Modal](https://modal.com) | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | L4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [DeepSeek R1 Distill Llama 70b](#deepseek-r1-distill-llama-70b) | pc-groq-d-6b723c | [Groq](https://www.groq.com) | N/A | No | Yes | N/A | Unknown | 32K | N/A | N/A | 30 | N/A | 1000 | None | None |
-| Deepseek R1 Distill Llama 70b | pc-samban-a86de3 | [Sambanova](https://sambanova.ai) | N/A | No | Yes | N/A | Unknown | 32K | N/A | N/A | 70 | 350 | 4200 | None | None |
+| [Meta-Llama-3.3-70B-Instruct](#meta-llama-33-70b-instruct) | pc-samba-4d0142 | [Sambanova](https://sambanova.ai) | N/A | No | Yes | N/A | Unknown | 32K | N/A | N/A | 70 | 350 | 4200 | None | None |
 
 *1 - Reasoning is toggled via the prompt
 
@@ -258,9 +258,16 @@ The DeepSeek R1 Distill Llama 70b is a distilled version of the Llama 70B model,
 
 I do not pay for [Groq](https://www.groq.com) so once you hit the limits of this model, you'll start to get errors.
 
-Key features include:
-- 32K context window
-- Reasoning enabled
-- Hosted on [Groq](https://www.groq.com) hardware for high throughput (30 RPM, 1000 RPD)
+### Meta-Llama-3.3-70B-Instruct
 
-This model is ideal for tasks that benefit from extended context and detailed reasoning, such as multi-step problem solving, document analysis, and agentic workflows.  [Groq](https://www.groq.com) is blazing fast, must faster than anything I could deliver using Nvidia GPU's and I use it for tasks requiring that speed.
+**ConfigID**: `pc-samba-4d0142`
+
+**Model Card**: You never know exactly which version or quant of a model an API provider delivers.
+
+This model is Meta's Llama 3.3 70B parameter instruction-tuned model, hosted on [Sambanova](https://sambanova.ai). It is designed for high-accuracy, instruction-following tasks and supports a 32K context window.
+
+**Key Features:**
+- 70B parameter Llama 3.3 architecture
+- Instruction-tuned for following complex prompts
+- 32K context window
+- Hosted on Sambanova infrastructure
