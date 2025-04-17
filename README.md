@@ -73,19 +73,44 @@ Developing AI applications can be frusterating.  I found developing agentic AI a
 Once deployed, you can interact with the models using the OpenAI Python client library or any HTTP client that supports the OpenAI API format. Authentication is handled via API keys.
 
 
-Example:
+Example Using portkey_ai:
 ```python
 # pip install portkey_ai
 from portkey_ai import [Portkey](https://portkey.ai)
 # Construct a client with a virtual key
 portkey = [Portkey](https://portkey.ai)(
-  api_key="{INSERTHEKEYIGAVEYOUHERE}",
+  api_key="{thekeyIgaveyougoeshere}",
   #virtual_key="openai-test1-accd5d",
-  config="{INSERTTHECONFIGFROMTHEMODELTABLEHERE}"
+  config="{theconfigIgaveyougoeshere}"
 )
 completion = portkey.chat.completions.create(
   messages = [{ "role": 'user', "content": 'Why does my dog like to lick his butt' }])
 print(completion)
+```
+Example using openai:
+```python
+# pip install openai
+import openai
+
+# Set your Portkey API key and config as if they were OpenAI-compatible
+PORTKEY_API_KEY = "{thekeyIgaveyougoeshere}"
+PORTKEY_BASE_URL = "https://api.portkey.ai/v1"
+PORTKEY_CONFIG = "{theconfigIgaveyougoeshere}"
+
+from openai import OpenAI
+client = OpenAI(
+    api_key=PORTKEY_API_KEY,
+    base_url=PORTKEY_BASE_URL
+)
+headers = {"x-portkey-config": PORTKEY_CONFIG}
+
+response = client.chat.completions.create(
+    model="gpt-3.5-turbo",  # Model name is ignored by Portkey, config controls routing
+    messages=[{"role": "user", "content": "Why does my cat always look at me like he wants to hurt me?"}],
+    extra_headers=headers
+)
+
+print(response)
 ```
 
 ## Roadmap
