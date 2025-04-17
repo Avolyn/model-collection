@@ -21,7 +21,7 @@ The table below (which scrolls if you drag it to the left) provides detailed spe
 
 | Model Name | ConfigID | Provider | Engine | Tool Calling | Reasoning | FlashInfer | Quantization | Context Window | GPU Type | GPU Count | RPM | RPH | RPD | Cache | LB |
 |------------|----------|----------|------------------|--------------|-----------|------------|--------------|----------------|----------|---------|-----|-----|-----|-------|----|
-| [Granite-3.2-8b-instruct](#granite-32-8b-instruct) | pc-modal-c07335 | [Modal](https://modal.com) | VLLM 0.8.3 v1 | Yes | No | 0.2.5 | None | 128K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [Granite-3.3-8b-instruct](#granite-33-8b-instruct) | pc-modal-4e74dc | [Modal](https://modal.com) | VLLM 0.8.4 v1 | Yes | No | 0.2.5 | None | 128K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [DeepHermes-3-Mistral-24B-Preview](#deephermes-3-mistral-24b-preview) | pc-model-08b0cd | [Modal](https://modal.com) | VLLM 0.8.2 v0 | No | Yes*1 | 0.2.0.post2 | None | 32K | A100-80GB | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [Qwen2.5-Coder-32B-Instruct](#qwen25-coder-32b-instruct) | pc-modal-467df0 | [Modal](https://modal.com) | VLLM 0.8.3 v1 | Yes | No | 0.2.0.post2 | GPTQ-Int4 (gptq_marlin) | 32K | A100-40GB | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [QwQ-32B-AWQ](#qwq-32b-awq) | pc-modal-19305a | [Modal](https://modal.com) | VLLM 0.8.2 v0 | Yes | Yes | 0.2.0.post2 | AWQ | 32K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
@@ -29,6 +29,7 @@ The table below (which scrolls if you drag it to the left) provides detailed spe
 | [BGE-large-en-v1.5](#bge-large-en-v15) | pc-modal-1a7579 | [Modal](https://modal.com) | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | T4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [Jina Reranker V2 Base Multilingual](#jina-reranker-v2-base-multilingual) | pc-modal-b951df | [Modal](https://modal.com) | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | L4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [DeepSeek R1 Distill Llama 70b](#deepseek-r1-distill-llama-70b) | pc-groq-d-6b723c | [Groq](https://www.groq.com) | N/A | No | Yes | N/A | Unknown | 32K | N/A | N/A | 30 | N/A | 1000 | None | None |
+| Deepseek R1 Distill Llama 70b | pc-samban-a86de3 | [Sambanova](https://sambanova.ai) | N/A | No | Yes | N/A | Unknown | 32K | N/A | N/A | 70 | 350 | 4200 | None | None |
 
 *1 - Reasoning is toggled via the prompt
 
@@ -98,25 +99,28 @@ I plan to add more models to this collection over time.  If you have a model you
 5. ✅ DeepSeek-R1-Distill-Llama-8B - Added!
 6. ✅ Jina Reranker V2 Base Multilingual - Added!
 7. ✅ DeepSeek R1 Distill Llama 70b - Added!
-8. [Sambanova](https://sambanova.ai) models
-9. [Runpod](https://www.runpod.io) deployed models
-10. Load balancing and Caching examples
-11. [Baseten](https://www.baseten.co) hosting
-12. Bedrock models
-13. Same model deployed in same configuration with [VLLM](https://github.com/vllm-project/vllm), [TensorRT](https://developer.nvidia.com/tensorrt), [SGLang](https://github.com/InternLM/sglang), and [Ollama](https://ollama.ai) for performance testing across the engines.
+8. ✅ Updated Granite from 3.2 to 3.3 running vllm 0.8.4 rather than 0.8.3 (2025-04-17)
+9. [Sambanova](https://sambanova.ai) models
+10. [Runpod](https://www.runpod.io) deployed models
+11. Load balancing and Caching examples
+12. [Baseten](https://www.baseten.co) hosting
+13. Bedrock models
+14. Same model deployed in same configuration with [VLLM](https://github.com/vllm-project/vllm), [TensorRT](https://developer.nvidia.com/tensorrt), [SGLang](https://github.com/InternLM/sglang), and [Ollama](https://ollama.ai) for performance testing across the engines.
 
 
 ## Model Notes
 
-### Granite-32-8b-instruct
+### Granite-33-8b-instruct
 
-**ConfigID**: `pc-modal-c07335`
+**ConfigID**: `pc-modal-4e74dc`
 
-**Model Card**: [IBM/granite-3.2-8b-instruct](https://huggingface.co/ibm-granite/granite-3.2-8b-instruct)
+**Model Card**: [IBM/granite-3.3-8b-instruct](https://huggingface.co/ibm-granite/granite-3.3-8b-instruct)
 
 The Granite-3.2-8b-instruct model is IBM's 8B parameter instruction-tuned model that excels at following instructions and tool calling.
 
 I use this model quite a bit for tool calling because its one of the few tool calling models that works at 8b parameters and its cheap to host.  The llama and qwen model family has struggled for me with tool calling in the smaller versions.
+
+If you are starting with agent frameworks, I highly suggest you start with this model as you will find it works well with tools.
 
 ### DeepHermes-3-Mistral-24B-Preview
 
