@@ -127,12 +127,11 @@ I plan to add more models to this collection over time.  If you have a model you
 7. ✅ DeepSeek R1 Distill Llama 70b - Added!
 8. ✅ Updated Granite from 3.2 to 3.3 running vllm 0.8.4 rather than 0.8.3 (2025-04-17)
 9. ✅ Added Granite running on SGLang (2025-04-18)
-10. [Sambanova](https://sambanova.ai) models
-11. [Runpod](https://www.runpod.io) deployed models
-12. Load balancing and Caching examples
-13. [Baseten](https://www.baseten.co) hosting
-14. Bedrock models
-15. Same model deployed in same configuration with [VLLM](https://github.com/vllm-project/vllm), [TensorRT](https://developer.nvidia.com/tensorrt), [SGLang](https://github.com/InternLM/sglang), and [Ollama](https://ollama.ai) for performance testing across the engines.
+10. [Runpod](https://www.runpod.io) deployed models
+11. Load balancing and Caching examples
+12. [Baseten](https://www.baseten.co) hosting
+13. Bedrock models
+14. Same model deployed in same configuration with [VLLM](https://github.com/vllm-project/vllm), [TensorRT](https://developer.nvidia.com/tensorrt), [SGLang](https://github.com/InternLM/sglang), and [Ollama](https://ollama.ai) for performance testing across the engines.
 
 
 ## Model Notes
