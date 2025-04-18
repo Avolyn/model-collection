@@ -30,7 +30,7 @@ The table below (which scrolls if you drag it to the left) provides detailed spe
 | [BGE-large-en-v1.5](#bge-large-en-v15) | pc-modal-1a7579 | [Modal](https://modal.com) | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | T4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [Jina Reranker V2 Base Multilingual](#jina-reranker-v2-base-multilingual) | pc-modal-b951df | [Modal](https://modal.com) | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | L4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [DeepSeek R1 Distill Llama 70b](#deepseek-r1-distill-llama-70b) | pc-groq-d-6b723c | [Groq](https://www.groq.com) | N/A | No | Yes | N/A | Unknown | 32K | N/A | N/A | 30 | N/A | 1000 | None | None |
-| [Meta-Llama-3.3-70B-Instruct](#meta-llama-33-70b-instruct) | pc-samba-4d0142 | [Sambanova](https://sambanova.ai) | N/A | No | Yes | N/A | Unknown | 32K | N/A | N/A | 70 | 350 | 4200 | None | None |
+| [Meta-Llama-3.3-70B-Instruct](#meta-llama-33-70b-instruct) | pc-samba-4d0142 | [Sambanova](https://sambanova.ai) | N/A | Yes | No | N/A | Unknown | 32K | N/A | N/A | 70 | 350 | 4200 | None | None |
 
 *1 - Reasoning is toggled via the prompt
 
