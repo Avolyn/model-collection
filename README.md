@@ -275,3 +275,5 @@ This model is Meta's Llama 3.3 70B parameter instruction-tuned model, hosted on 
 - Instruction-tuned for following complex prompts
 - 32K context window
 - Hosted on Sambanova infrastructure
+
+I don't care what anyone says, Sambanova's RDU is blazing fast.  The fastest inference you are going to find anywhere.  Groq held that position for a while, but Sambanova has now taken the lead.  The Nvidia B200 doesn't even come close to what they are delivering.  At some point I will stop using Groq alltogether, but for now I keep the API around for the free tokens.
