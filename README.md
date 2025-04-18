@@ -126,12 +126,13 @@ I plan to add more models to this collection over time.  If you have a model you
 6. ✅ Jina Reranker V2 Base Multilingual - Added!
 7. ✅ DeepSeek R1 Distill Llama 70b - Added!
 8. ✅ Updated Granite from 3.2 to 3.3 running vllm 0.8.4 rather than 0.8.3 (2025-04-17)
-9. [Sambanova](https://sambanova.ai) models
-10. [Runpod](https://www.runpod.io) deployed models
-11. Load balancing and Caching examples
-12. [Baseten](https://www.baseten.co) hosting
-13. Bedrock models
-14. Same model deployed in same configuration with [VLLM](https://github.com/vllm-project/vllm), [TensorRT](https://developer.nvidia.com/tensorrt), [SGLang](https://github.com/InternLM/sglang), and [Ollama](https://ollama.ai) for performance testing across the engines.
+9. ✅ Added Granite running on SGLang (2025-04-18)
+10. [Sambanova](https://sambanova.ai) models
+11. [Runpod](https://www.runpod.io) deployed models
+12. Load balancing and Caching examples
+13. [Baseten](https://www.baseten.co) hosting
+14. Bedrock models
+15. Same model deployed in same configuration with [VLLM](https://github.com/vllm-project/vllm), [TensorRT](https://developer.nvidia.com/tensorrt), [SGLang](https://github.com/InternLM/sglang), and [Ollama](https://ollama.ai) for performance testing across the engines.
 
 
 ## Model Notes
@@ -149,6 +150,8 @@ I use this model quite a bit for tool calling because its one of the few tool ca
 If you are starting with agent frameworks, I highly suggest you start with this model as you will find it works well with tools.
 
 I have included Granite 3.3-8b-instruct hosted with SGLang 0.4.1 and Vllm 0.8.4 v1.  I did this because I wanted to compare the performance of SGLang to Vllm.  You will notice that the SGLang version doesn't support tool calling.  SGLang supports very few models for tool calling and this is one of those models that isn't supported.
+
+*One last note, an interesting test is to send the same prompts to both the SGLang and the VLLM model.  They are the exact same model commit from hugging face full precision, but you will find that you often get very different outputs between the two.  What that tells us is that how you run the model is as important as the model and its quant level.  It also tells you that loadbalacing between two model hosting API's may not be the best idea considering the outputs you may receive may be very different.
 
 ### DeepHermes-3-Mistral-24B-Preview
 
@@ -176,7 +179,7 @@ Do not include that section in your system prompt and it will act as a tradition
 
 The Qwen2.5-Coder-32B-Instruct model is Alibaba's code-specialized large language model with 32B parameters. This version uses GPTQ 4-bit quantization to reduce memory requirements while maintaining high performance.
 
-This model I have found works fantastic as a coding replacement model for Sonnet 3.5-7.  If you are into vibe coding with technologies such as Aider, Roo Code, or Cline, you'll find its near impossible to find a model that works as well as Sonnet 3.5 or 3.7.  I have tested at least 20 different model architectures and parameter sizes, and Qwen25-Coder-32B-Instruct always comes out on top.
+This model I have found works fantastic as a coding replacement model for Sonnet 3.5-7. If you are into vibe coding with technologies such as [Aider](https://github.com/paul-gauthier/aider), [Roo Code](https://www.roocode.com/), or [Cline](https://github.com/cline/cline), you'll find it's near impossible to find a model that works as well as Sonnet 3.5 or 3.7. I have tested at least 20 different model architectures and parameter sizes, and Qwen2.5-Coder-32B-Instruct always comes out on top.
 
 I also have found that the int4 awq quantized version works just as well as full precision.  So in order to save on model hosting costs and fit it onto a 40gb card, I run it with awq quantization.  No need to spend extra pennies when not required.  I did run this for a moment on an L40S rather than the A100-40GB, but the performance was subpar so I reverted back to A100-40GB.  Quite honestly when used for vibe coding, it probably could use a bit more oomph than the A100 but I am cheap and willing to wait a little longer to save a buck.
 
