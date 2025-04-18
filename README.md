@@ -148,7 +148,7 @@ I use this model quite a bit for tool calling because its one of the few tool ca
 
 If you are starting with agent frameworks, I highly suggest you start with this model as you will find it works well with tools.
 
-I have included Granite 3.3-8b-instruct hosted with SGLang 0.4.1 and Vllm 0.8.4 v1.  I because I wanted to compare the performance of SGLang to Vllm.  You will notice that the SGLang version doesn't support tool calling.  SGLang supports very few models for tool calling and this is one of those models that isn't supported.
+I have included Granite 3.3-8b-instruct hosted with SGLang 0.4.1 and Vllm 0.8.4 v1.  I did this because I wanted to compare the performance of SGLang to Vllm.  You will notice that the SGLang version doesn't support tool calling.  SGLang supports very few models for tool calling and this is one of those models that isn't supported.
 
 ### DeepHermes-3-Mistral-24B-Preview
 
