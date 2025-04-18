@@ -22,6 +22,7 @@ The table below (which scrolls if you drag it to the left) provides detailed spe
 | Model Name | ConfigID | Provider | Engine | Tool Calling | Reasoning | FlashInfer | Quantization | Context Window | GPU Type | GPU Count | RPM | RPH | RPD | Cache | LB |
 |------------|----------|----------|------------------|--------------|-----------|------------|--------------|----------------|----------|---------|-----|-----|-----|-------|----|
 | [Granite-3.3-8b-instruct](#granite-33-8b-instruct) | pc-modal-4e74dc | [Modal](https://modal.com) | VLLM 0.8.4 v1 | Yes | No | 0.2.5 | None | 128K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| [Granite-3.3-8b-instruct](#granite-33-8b-instruct) | pc-modal-08c082 | [Modal](https://modal.com) | SGLang 0.4.1 | No | No | 0.1.6+cu124torch2.4 | None | 128K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [DeepHermes-3-Mistral-24B-Preview](#deephermes-3-mistral-24b-preview) | pc-model-08b0cd | [Modal](https://modal.com) | VLLM 0.8.2 v0 | No | Yes*1 | 0.2.0.post2 | None | 32K | A100-80GB | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [Qwen2.5-Coder-32B-Instruct](#qwen25-coder-32b-instruct) | pc-modal-467df0 | [Modal](https://modal.com) | VLLM 0.8.3 v1 | Yes | No | 0.2.0.post2 | GPTQ-Int4 (gptq_marlin) | 32K | A100-40GB | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [QwQ-32B-AWQ](#qwq-32b-awq) | pc-modal-19305a | [Modal](https://modal.com) | VLLM 0.8.2 v0 | Yes | Yes | 0.2.0.post2 | AWQ | 32K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
@@ -54,7 +55,7 @@ The models I host on [Modal](https://modal.com) run in either AWS and GCP.  I do
 
 I originally exposed the raw model endpoints, but I have since interjected an AI gatway layer in the form of [Portkey](https://portkey.ai).  The main reason I have done this is to add model routing and load balancing, model fallbacks, caching, and security features to some of the models I host.  My original idea was to host the gateway myself in the form of Litellm or Kong AI Gateway, I have used both gateways extensively, but I decided that I didn't want the care and feeding of a production level kube cluster and deal with all that goes along with hosting those gateways by hand.  You will see in the model table that some of the models I host have a LB (Load Balancing) and Cache feature enabled.  Those are portkey configurations, and have nothing to do with how the models are deployed for inference.
 
-It is stupid simple to inject call backs and various configurations into model hosting to log requests and responses.  You have my word that I don't do any of that with the models I host.  For the models that are delivered via an API provider like [Sambanova](https://sambanova.ai), I have no control over what they do with your data.  As I add providers over time, if the provider offers the ability to disable caching and logging I will do that, but in the case of [Sambanova](https://sambanova.ai), I have no control over what they do with your data.  Buyer Beware.
+It is stupid simple to inject call backs and various configurations into model hosting to log requests and responses.  You have my word that I don't do any of that with the models I host.  For the models that are delivered via an API provider like [Sambanova](https://sambanova.ai), I have no control over what they do with your data.  As I add providers over time, if the provider offers the ability to disable caching and logging I will do that, but in the case of [Sambanova](https://sambanova.ai), Buyer Beware!
 
 Given that everything goes thru [Portkey](https://portkey.ai), you need to be aware that your requests and responses are being logged unless you follow this guide https://portkey.ai/docs/product/observability/logs#do-not-track.  Of course any model that is configured for caching is going to cache your requests and responses regardless of what you do with your client side settings so buyer beware.
 
@@ -146,6 +147,8 @@ The Granite-3.2-8b-instruct model is IBM's 8B parameter instruction-tuned model 
 I use this model quite a bit for tool calling because its one of the few tool calling models that works at 8b parameters and its cheap to host.  The llama and qwen model family has struggled for me with tool calling in the smaller versions.
 
 If you are starting with agent frameworks, I highly suggest you start with this model as you will find it works well with tools.
+
+I have included Granite 3.3-8b-instruct hosted with SGLang 0.4.1 and Vllm 0.8.4 v1.  I because I wanted to compare the performance of SGLang to Vllm.  You will notice that the SGLang version doesn't support tool calling.  SGLang supports very few models for tool calling and this is one of those models that isn't supported.
 
 ### DeepHermes-3-Mistral-24B-Preview
 
