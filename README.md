@@ -49,11 +49,11 @@ Each model has been painstakenly tested and deployed for the best price and perf
 
 ## Performance
 
-The models I host on [Modal](https://modal.com) run in either AWS and GCP.  I don't have any control over the hyperscaler regions, but from my testing they all deploy to domestic endpoints.  The models I host on [Runpod](https://www.runpod.io) execute on [Runpod](https://www.runpod.io) hardware in their secure cloud, rather than the community cloud, and are hosted domestically.  With that said, both providers will scale to thousands of GPU's and containers if you apply pressure to the endpoint.  Of course I ask you to be responsible as we all know GPU's are not free and the GPU price per ounce costs are more expensive than gold.  I do have budgets in place if a mistake is made and you scale up 10k containers so no need to worry about that on your end.
+The models I host on [Modal](https://modal.com) run in either AWS and GCP.  I don't have any control over the hyperscaler regions, but from my testing they all deploy to domestic endpoints.  The models I host on [Runpod](https://www.runpod.io) execute on [Runpod](https://www.runpod.io) hardware in their secure cloud, rather than the community cloud, and are hosted domestically.  With that said, both providers will scale to thousands of GPU's and containers if you apply pressure to the endpoint.  Of course I ask you to be responsible as we all know GPU's are not free and the GPU price per ounce costs is more expensive than gold.  I do have budgets in place if a mistake is made and you scale up 10k containers so no need to worry about that on your end.
 
 ## Security
 
-I originally exposed the raw model endpoints, but I have since interjected an AI gatway layer in the form of [Portkey](https://portkey.ai).  The main reason I have done this is to add model routing and load balancing, model fallbacks, caching, and security features to some of the models I host.  My original idea was to host the gateway myself in the form of [Litellm](https://github.com/BerriAI/litellm) or [Kong AI Gateway](https://github.com/Kong/gateway), I have used both gateways due to their ease of use, but I decided that I didn't want the care and feeding of a production level kube cluster and deal with all that goes along with hosting those gateways by hand.  You will see in the model table that some of the models I host have a LB (Load Balancing) and Cache feature enabled.  Those are portkey configurations, and have nothing to do with how the models are deployed for inference.
+I originally exposed the raw model endpoints, but I have since interjected an AI gateway layer in the form of [Portkey](https://portkey.ai).  The main reason I have done this is to add model routing and load balancing, model fallbacks, caching, and security features to some of the models I host.  My original idea was to host the gateway myself in the form of [Litellm](https://github.com/BerriAI/litellm) or [Kong AI Gateway](https://github.com/Kong/gateway), I have used both gateways due to their ease of use, but I decided that I didn't want the care and feeding of a production level kube cluster and deal with all that goes along with hosting those gateways by hand.  You will see in the model table that some of the models I host have a LB (Load Balancing) and Cache feature enabled.  Those are portkey configurations, and have nothing to do with how the models are deployed for inference.
 
 It is stupid simple to inject call backs and various configurations into model hosting to log requests and responses.  You have my word that I don't do any of that with the models I host.  For the models that are delivered via an API provider like [Sambanova](https://sambanova.ai), I have no control over what they do with your data.  As I add providers over time, if the provider offers the ability to disable caching and logging I will do that, but in the case of [Sambanova](https://sambanova.ai), Buyer Beware!
 
@@ -81,7 +81,6 @@ from portkey_ai import [Portkey](https://portkey.ai)
 # Construct a client with a virtual key
 portkey = [Portkey](https://portkey.ai)(
   api_key="{thekeyIgaveyougoeshere}",
-  #virtual_key="openai-test1-accd5d",
   config="{theconfigIgaveyougoeshere}"
 )
 completion = portkey.chat.completions.create(
