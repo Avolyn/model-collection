@@ -81,7 +81,7 @@ from portkey_ai import [Portkey](https://portkey.ai)
 # Construct a client with a virtual key
 portkey = [Portkey](https://portkey.ai)(
   api_key="{thekeyIgaveyougoeshere}",
-  config="{theconfigIgaveyougoeshere}"
+  config="{theconfigidentifierhere}"
 )
 completion = portkey.chat.completions.create(
   messages = [{ "role": 'user', "content": 'Why does my dog like to lick his butt' }])
@@ -95,7 +95,7 @@ import openai
 # Set your Portkey API key and config as if they were OpenAI-compatible
 PORTKEY_API_KEY = "{thekeyIgaveyougoeshere}"
 PORTKEY_BASE_URL = "https://api.portkey.ai/v1"
-PORTKEY_CONFIG = "{theconfigIgaveyougoeshere}"
+PORTKEY_CONFIG = "{theconfigidentifierhere}"
 
 from openai import OpenAI
 client = OpenAI(
