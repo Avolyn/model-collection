@@ -25,12 +25,13 @@ The table below (which scrolls if you drag it to the left) provides detailed spe
 | [Granite-3.3-8b-instruct](#granite-33-8b-instruct) | pc-modal-08c082 | [Modal](https://modal.com) | SGLang 0.4.1 | No | No | 0.1.6+cu124torch2.4 | None | 128K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [DeepHermes-3-Mistral-24B-Preview](#deephermes-3-mistral-24b-preview) | pc-model-08b0cd | [Modal](https://modal.com) | VLLM 0.8.2 v0 | No | Yes*1 | 0.2.0.post2 | None | 32K | A100-80GB | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [Qwen2.5-Coder-32B-Instruct](#qwen25-coder-32b-instruct) | pc-modal-467df0 | [Modal](https://modal.com) | VLLM 0.8.3 v1 | Yes | No | 0.2.0.post2 | GPTQ-Int4 (gptq_marlin) | 32K | A100-40GB | 1 | Unlimited | Unlimited | Unlimited | None | None |
-| [QwQ-32B-AWQ](#qwq-32b-awq) | pc-modal-19305a | [Modal](https://modal.com) | VLLM 0.8.2 v0 | Yes | Yes | 0.2.0.post2 | AWQ | 32K | L40S | 1 | Unlimited | Unlimited | Unlimited | None | None |
+| ~~[QwQ-32B-AWQ](#qwq-32b-awq)~~ | ~~pc-modal-19305a~~ | ~~[Modal](https://modal.com)~~ | ~~VLLM 0.8.2 v0~~ | ~~Yes~~ | ~~Yes~~ | ~~0.2.0.post2~~ | ~~AWQ~~ | ~~32K~~ | ~~L40S~~ | ~~1~~ | ~~Unlimited~~ | ~~Unlimited~~ | ~~Unlimited~~ | ~~None~~ | ~~None~~ |
 | [DeepSeek-R1-Distill-Llama-8B](#deepseek-r1-distill-llama-8b) | pc-modal-7b241d | [Modal](https://modal.com) | VLLM 0.8.3 v0 | No | Yes | 0.2.0post2 | None | 32K | L4 | 2 | Unlimited | Unlimited | Unlimited | None | None |
 | [BGE-large-en-v1.5](#bge-large-en-v15) | pc-modal-1a7579 | [Modal](https://modal.com) | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | T4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [Jina Reranker V2 Base Multilingual](#jina-reranker-v2-base-multilingual) | pc-modal-b951df | [Modal](https://modal.com) | VLLM 0.8.3 v0 | N/A | N/A | N/A | None | N/A | L4 | 1 | Unlimited | Unlimited | Unlimited | None | None |
 | [DeepSeek R1 Distill Llama 70b](#deepseek-r1-distill-llama-70b) | pc-groq-d-6b723c | [Groq](https://www.groq.com) | N/A | No | Yes | N/A | Unknown | 32K | N/A | N/A | 30 | N/A | 1000 | None | None |
 | [Meta-Llama-3.3-70B-Instruct](#meta-llama-33-70b-instruct) | pc-samba-4d0142 | [Sambanova](https://sambanova.ai) | N/A | Yes | No | N/A | Unknown | 32K | N/A | N/A | 70 | 350 | 4200 | None | None |
+| [Qwen3-30B-A3B-FP8](#qwen3-30b-a3b-fp8) | pc-modal-1a7579 | [Modal](https://modal.com) | VLLM 0.8.5.post1 v0 | 128K | Yes | Yes | None | N/A | H100 | 1 | Unlimited | Unlimited | Unlimited | None | None |
 
 *1 - Reasoning is toggled via the prompt
 
@@ -117,20 +118,22 @@ print(response)
 
 I plan to add more models to this collection over time.  If you have a model you'd like me to add, please let me know.
 
-1. ✅ Deepseek R1 Distill model - Added!
-2. ✅ BGE-large-en-v1.5 - Added!
-3. ✅ Qwen2.5-Coder-32B-Instruct - Added!
-4. ✅ QwQ-32B-AWQ - Added!
-5. ✅ DeepSeek-R1-Distill-Llama-8B - Added!
-6. ✅ Jina Reranker V2 Base Multilingual - Added!
-7. ✅ DeepSeek R1 Distill Llama 70b - Added!
-8. ✅ Updated Granite from 3.2 to 3.3 running vllm 0.8.4 rather than 0.8.3 (2025-04-17)
-9. ✅ Added Granite running on SGLang (2025-04-18)
-10. [Runpod](https://www.runpod.io) deployed models
-11. Load balancing and Caching examples
-12. [Baseten](https://www.baseten.co) hosting
-13. Bedrock models
-14. Same model deployed in same configuration with [VLLM](https://github.com/vllm-project/vllm), [TensorRT](https://developer.nvidia.com/tensorrt), [SGLang](https://github.com/InternLM/sglang), and [Ollama](https://ollama.ai) for performance testing across the engines.
+1.  ✅ Deepseek R1 Distill model - Added!
+2.  ✅ BGE-large-en-v1.5 - Added!
+3.  ✅ Qwen2.5-Coder-32B-Instruct - Added!
+4.  ✅ QwQ-32B-AWQ - Added!
+5.  ✅ DeepSeek-R1-Distill-Llama-8B - Added!
+6.  ✅ Jina Reranker V2 Base Multilingual - Added!
+7.  ✅ DeepSeek R1 Distill Llama 70b - Added!
+8.  ✅ Updated Granite from 3.2 to 3.3 running vllm 0.8.4 rather than 0.8.3 (2025-04-17)
+9.  ✅ Added Granite running on SGLang (2025-04-18)
+10. ✅ Decommissioned QWQ to be replaced by Qwen3 (2025-05-03)
+11. ✅ Added Qwen3-30B-A3B-FP8 (2025-05-03)
+11. [Runpod](https://www.runpod.io) deployed models
+12. Load balancing and Caching examples
+13. [Baseten](https://www.baseten.co) hosting
+14. Bedrock models
+15. Same model deployed in same configuration with [VLLM](https://github.com/vllm-project/vllm), [TensorRT](https://developer.nvidia.com/tensorrt), [SGLang](https://github.com/InternLM/sglang), and [Ollama](https://ollama.ai) for performance testing across the engines.
 
 
 ## Model Notes
@@ -181,17 +184,17 @@ This model I have found works fantastic as a coding replacement model for Sonnet
 
 I also have found that the int4 awq quantized version works just as well as full precision.  So in order to save on model hosting costs and fit it onto a 40gb card, I run it with awq quantization.  No need to spend extra pennies when not required.  I did run this for a moment on an L40S rather than the A100-40GB, but the performance was subpar so I reverted back to A100-40GB.  Quite honestly when used for vibe coding, it probably could use a bit more oomph than the A100 but I am cheap and willing to wait a little longer to save a buck.
 
-### QwQ-32B-AWQ
+### QwQ-32B-AWQ  **Decommissioned**
 
-**ConfigID**: `pc-modal-19305a`
+**ConfigID**:
 
 **Model Card**: [Qwen/QwQ-32B](https://huggingface.co/Qwen/QwQ-32B)
 
-QwQ-32B-AWQ is Qwen's specialized reasoning model with 32B parameters, quantized using AWQ to 4-bit precision. This model is particularly strong at mathematical reasoning, scientific analysis, and complex problem-solving tasks.
+~~QwQ-32B-AWQ is Qwen's specialized reasoning model with 32B parameters, quantized using AWQ to 4-bit precision. This model is particularly strong at mathematical reasoning, scientific analysis, and complex problem-solving tasks.~~
 
-What makes this model special is its dual capabilities - it combines both tool calling and reasoning in a single model. The reasoning is implemented using the DeepSeek-R1 reasoning parser, which allows the model to show its step-by-step thinking process before providing a final answer.
+~~What makes this model special is its dual capabilities - it combines both tool calling and reasoning in a single model. The reasoning is implemented using the DeepSeek-R1 reasoning parser, which allows the model to show its step-by-step thinking process before providing a final answer.~~
 
-I am particularly partial to the Qwen model family for just about everything and this model is no exception.
+~~I am particularly partial to the Qwen model family for just about everything and this model is no exception.~~
 
 ### DeepSeek-R1-Distill-Llama-8B
 
@@ -277,3 +280,21 @@ This model is Meta's Llama 3.3 70B parameter instruction-tuned model, hosted on 
 - Hosted on Sambanova infrastructure
 
 I don't care what anyone says, Sambanova's RDU is blazing fast.  The fastest inference you are going to find anywhere.  Groq held that position for a while, but Sambanova has now taken the lead.  The Nvidia B200 doesn't even come close to what they are delivering.  At some point I will stop using Groq alltogether, but for now I keep the API around for the free tokens.
+
+### Qwen3-30B-A3B
+
+**ConfigID**: `pc-modal-ad24dd`
+
+**Model Card**: [Qwen/Qwen3-30B-A3B](https://huggingface.co/Qwen/Qwen3-30B-A3B)
+
+Qwen3-30B-A3B is Qwen's latest generation 30B parameter model with enhanced reasoning capabilities. This FP8 quantized version maintains high precision while being optimized for modern GPU architectures.  This model is similar to the DeepHermes model in that it allows you to toggle reasoning via a system prompt.
+
+Key features include:
+- 128K context window with YARN RoPE scaling
+- Excellent performance on both reasoning and coding tasks
+- Supports tool calling and function execution
+- Optimized for VLLM 0.8.5.post1 with efficient FP8 inference.
+
+This model has become my daily driver for most tasks, combining the reasoning capabilities of larger models with the efficiency of a 30B parameter size. The FP8 quantization provides nearly lossless performance while significantly reducing memory requirements compared to full precision.
+
+**Note on Hardware Requirements**: Due to FP8 precision requirements, this model runs on NVIDIA Hopper architecture GPUs (H100).
