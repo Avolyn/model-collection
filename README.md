@@ -1,4 +1,4 @@
-# Scott's AI Model Collection
+# AI Model Collection
 
 This repository contains a collection of hosted AI models I find differentuated and useful for building Agentic AI applications.  I host on [Runpod](https://www.runpod.io) or [Modal](https://modal.com) and the models deployed to those providers are configured  utilize the full allowed context length without any rate limiting constraints.
 
